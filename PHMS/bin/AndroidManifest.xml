@@ -34,6 +34,10 @@
             android:name="com.example.phms.MainMenuActivity"
             android:label="@string/title_activity_main_menu" >
         </activity>
+        <activity
+            android:name="com.example.phms.DietActivity"
+            android:label="@string/title_activity_diet" >
+        </activity>
     </application>
 
 </manifest>

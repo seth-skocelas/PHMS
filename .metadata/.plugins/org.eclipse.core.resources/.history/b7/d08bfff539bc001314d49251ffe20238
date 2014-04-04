@@ -19,8 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginRight="80dp"
-        android:text="@string/diet_management"
-    	android:onClick="startDiet" />
+        android:text="@string/diet_management"/>
 
     <Button
         android:id="@+id/button4"
