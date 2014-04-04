@@ -41,6 +41,6 @@
     <string name="edit_acct">Edit Account</string>
     <string name="logout">Log Out</string>
     <string name="title_activity_medication">Medication</string>
-    
+    <string name="title_activity_diet">DietActivity</string>
 
 </resources>

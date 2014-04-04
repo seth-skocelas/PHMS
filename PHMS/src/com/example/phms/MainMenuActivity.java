@@ -26,6 +26,11 @@ public class MainMenuActivity extends Activity {
 		return true;
 	}
 	
+	public void displayDiet(View view) {
+		Intent intent = new Intent(this, DietActivity.class);
+	    startActivity(intent);
+	}
+	
 	public void LogOut(View view) {
 		
 
