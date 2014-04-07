@@ -54,6 +54,18 @@
             android:name="com.example.phms.ResultActivity"
             android:label="@string/title_activity_result" >
         </activity>
+        <activity
+            android:name="com.example.phms.FoodEditorActivity"
+            android:label="@string/title_activity_food_editor" >
+        </activity>
+        <activity
+            android:name="com.example.phms.ExerciseEditorActivity"
+            android:label="@string/title_activity_exercise_editor" >
+        </activity>
+        <activity
+            android:name="com.example.phms.VitalSignsActivity"
+            android:label="@string/title_activity_vital_signs" >
+        </activity>
     </application>
 
 </manifest>

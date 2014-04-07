@@ -57,7 +57,8 @@
     <string name="searchInstructions">Please enter the term you are searching for:</string>
     <string name="searchType">Please select search type:</string>
     <string name="search">Search</string>
-	<string name="resultInfo">Touch the result to access information about it.</string>
+    <string name="resultInfo">Touch the result to access information about it.</string>
+
     <string-array name="searchchoices">
         <item>Ad-Hoc</item>
         <item>Diet</item>
@@ -67,5 +68,8 @@
     </string-array>
 
     <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_food_editor">FoodEditorActivity</string>
+    <string name="title_activity_exercise_editor">ExerciseEditorActivity</string>
+    <string name="title_activity_vital_signs">VitalSignsActivity</string>
 
 </resources>

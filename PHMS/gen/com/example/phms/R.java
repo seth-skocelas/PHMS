@@ -70,24 +70,30 @@ public final class R {
     public static final class layout {
         public static final int activity_add_medication=0x7f030000;
         public static final int activity_diet=0x7f030001;
-        public static final int activity_login=0x7f030002;
-        public static final int activity_main_menu=0x7f030003;
-        public static final int activity_medication=0x7f030004;
-        public static final int activity_recover=0x7f030005;
-        public static final int activity_register=0x7f030006;
-        public static final int activity_result=0x7f030007;
-        public static final int activity_search=0x7f030008;
+        public static final int activity_exercise_editor=0x7f030002;
+        public static final int activity_food_editor=0x7f030003;
+        public static final int activity_login=0x7f030004;
+        public static final int activity_main_menu=0x7f030005;
+        public static final int activity_medication=0x7f030006;
+        public static final int activity_recover=0x7f030007;
+        public static final int activity_register=0x7f030008;
+        public static final int activity_result=0x7f030009;
+        public static final int activity_search=0x7f03000a;
+        public static final int activity_vital_signs=0x7f03000b;
     }
     public static final class menu {
         public static final int add_medication=0x7f080000;
         public static final int diet=0x7f080001;
-        public static final int login=0x7f080002;
-        public static final int main_menu=0x7f080003;
-        public static final int medication=0x7f080004;
-        public static final int recover=0x7f080005;
-        public static final int register=0x7f080006;
-        public static final int result=0x7f080007;
-        public static final int search=0x7f080008;
+        public static final int exercise_editor=0x7f080002;
+        public static final int food_editor=0x7f080003;
+        public static final int login=0x7f080004;
+        public static final int main_menu=0x7f080005;
+        public static final int medication=0x7f080006;
+        public static final int recover=0x7f080007;
+        public static final int register=0x7f080008;
+        public static final int result=0x7f080009;
+        public static final int search=0x7f08000a;
+        public static final int vital_signs=0x7f08000b;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -135,12 +141,15 @@ public final class R {
         public static final int security=0x7f050016;
         public static final int title_activity_add_medication=0x7f05002b;
         public static final int title_activity_diet=0x7f050027;
+        public static final int title_activity_exercise_editor=0x7f05003a;
+        public static final int title_activity_food_editor=0x7f050039;
         public static final int title_activity_main_menu=0x7f05001d;
         public static final int title_activity_medication=0x7f050026;
         public static final int title_activity_recover=0x7f050019;
         public static final int title_activity_register=0x7f050009;
         public static final int title_activity_result=0x7f050038;
         public static final int title_activity_search=0x7f050033;
+        public static final int title_activity_vital_signs=0x7f05003b;
         public static final int unit=0x7f050031;
         public static final int upcoming_events=0x7f050022;
         public static final int username=0x7f05000c;
