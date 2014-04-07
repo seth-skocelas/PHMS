@@ -28,7 +28,7 @@
     <string name="recoInfo">If there is an account on file with this email, an email will be sent out 
 	    					that will allow you to reset your password</string>
     <string name="title_activity_recover">Recover</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="dialog_message">Test</string>
     <string name="dialog_title">Test</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
@@ -42,5 +42,30 @@
     <string name="logout">Log Out</string>
     <string name="title_activity_medication">Medication</string>
     <string name="title_activity_diet">DietActivity</string>
+    <string name="medInstructions">Select a medication to edit:</string>
+    <string name="add">Add</string>
+    <string name="ret">Return</string>
+    <string name="title_activity_add_medication">AddMedicationActivity</string>
+    <string name="addMedInstructions">Please fill in all the fields:</string>
+    <string name="name">Name:</string>
+    <string name="datetime">Date/Time:</string>
+    <string name="conflictions">Conflictions:</string>
+    <string name="dosage">Dosage (Amount):</string>
+    <string name="unit">Unit:</string>
+    <string name="save">Save</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="searchInstructions">Please enter the term you are searching for:</string>
+    <string name="searchType">Please select search type:</string>
+    <string name="search">Search</string>
+	<string name="resultInfo">Touch the result to access information about it.</string>
+    <string-array name="searchchoices">
+        <item>Ad-Hoc</item>
+        <item>Diet</item>
+        <item>Vital Signs</item>
+        <item>Medications</item>
+        <item>Google Search</item>
+    </string-array>
+
+    <string name="title_activity_result">ResultActivity</string>
 
 </resources>

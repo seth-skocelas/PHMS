@@ -26,6 +26,27 @@ public class MainMenuActivity extends Activity {
 		return true;
 	}
 	
+	public void displayDiet(View view) {
+		Intent intent = new Intent(this, DietActivity.class);
+	    startActivity(intent);
+	}
+	public void displayMenu(View view) {
+		Intent intent = new Intent(this, MainMenuActivity.class);
+	    startActivity(intent);
+	}
+	
+	public void displayMed(View view) {
+		Intent intent = new Intent(this, MedicationActivity.class);
+	    startActivity(intent);
+	}
+	
+	public void displaySearch(View view) {
+		
+		Intent intent = new Intent(this, SearchActivity.class);
+	    startActivity(intent);
+
+	}
+	
 	public void LogOut(View view) {
 		
 
@@ -48,11 +69,5 @@ public class MainMenuActivity extends Activity {
 		
 	}
 	
-	public void startDiet(View view) {
-		
-		Intent intent = new Intent(this, DietActivity.class);
-	    startActivity(intent);
-
-}
 
 }

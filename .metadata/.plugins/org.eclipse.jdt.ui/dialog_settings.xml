@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="480,510" key="UserLibraryLoadSaveDialog.size"/>
+	<item value="C:\Users\Seth\Downloads\adt-bundle-windows-x86-20131030\adt-bundle-windows-x86-20131030\sdk\extras\android\support\v7\gridlayout\libs" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
@@ -26,7 +28,7 @@
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="BuildPathsPropertyPage">
-		<item value="3" key="pageIndex"/>
+		<item value="2" key="pageIndex"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
@@ -34,5 +36,8 @@
 		<item value="false" key="create_constructor"/>
 		<item value="false" key="create_main"/>
 		<item value="true" key="create_unimplemented"/>
+	</section>
+	<section name="ClasspathContainerSelectionPage">
+		<item value="3" key="index"/>
 	</section>
 </section>

@@ -38,6 +38,22 @@
             android:name="com.example.phms.DietActivity"
             android:label="@string/title_activity_diet" >
         </activity>
+        <activity
+            android:name="com.example.phms.MedicationActivity"
+            android:label="@string/title_activity_medication" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AddMedicationActivity"
+            android:label="@string/title_activity_add_medication" >
+        </activity>
+        <activity
+            android:name="com.example.phms.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name="com.example.phms.ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
 
 </manifest>

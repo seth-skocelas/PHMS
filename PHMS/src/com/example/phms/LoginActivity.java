@@ -53,7 +53,7 @@ public void startRecover(View view) {
 	    
 	}
 public void displayMenu(View view) {
-	Intent intent = new Intent(this, RecoverActivity.class);
+	Intent intent = new Intent(this, MainMenuActivity.class);
     startActivity(intent);
 }
 public void checkLogin(View view) {

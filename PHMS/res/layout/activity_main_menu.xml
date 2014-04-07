@@ -20,7 +20,7 @@
         android:layout_centerInParent="true"
         android:layout_marginRight="80dp"
         android:text="@string/diet_management"
-    	android:onClick="startDiet" />
+    	android:onClick="displayDiet" />
 
     <Button
         android:id="@+id/button4"
@@ -38,7 +38,8 @@
         android:layout_below="@+id/button4"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="80dp"
-        android:text="@string/search_app" />
+        android:text="@string/search_app"
+        android:onClick="displaySearch" />
 
     <Button
         android:id="@+id/button2"
@@ -51,12 +52,13 @@
 
     <Button
         android:id="@+id/button1"
-        style="@style/AppBaseTheme"
+        style="@id/button1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="80dp"
+        android:onClick="displayMed"
         android:text="@string/medications" />
 
     <TextView
