@@ -7,13 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.content.DialogInterface;
+
 
 
 public class LoginActivity extends Activity {
@@ -29,6 +23,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		
 	}
 
 	@Override
@@ -46,17 +42,17 @@ public class LoginActivity extends Activity {
 	    
 	}
 	
-public void startRecover(View view) {
+	public void startRecover(View view) {
 		
 		Intent intent = new Intent(this, RecoverActivity.class);
 	    startActivity(intent);
 	    
 	}
-public void displayMenu(View view) {
+	public void displayMenu(View view) {
 	Intent intent = new Intent(this, MainMenuActivity.class);
     startActivity(intent);
 }
-public void checkLogin(View view) {
+	public void checkLogin(View view) {
 	
 
 	AlertDialog alertDialog = new AlertDialog.Builder(this).create();

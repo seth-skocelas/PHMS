@@ -59,9 +59,10 @@
         android:layout_alignLeft="@+id/textView10"
         android:layout_below="@+id/editText1"
         android:layout_marginTop="91dp"
-        android:text="@string/cancel" />
+        android:text="@string/cancel"
+        android:onClick="onCancel" />
 
-    <EditText
+   	<EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
         android:layout_marginTop="17dp"
         android:ems="10" >
 
-        <requestFocus />
+
     </EditText>
 
     <TextView

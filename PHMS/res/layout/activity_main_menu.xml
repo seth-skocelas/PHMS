@@ -78,8 +78,9 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/edit_acct"
-        android:textSize="12sp" />
+        android:text="@string/settings"
+        android:textSize="12sp"
+        android:onClick="displaySettings" />
 
     <Button
         android:id="@+id/button7"

@@ -2,7 +2,9 @@ package com.example.phms;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
 
 public class RegisterActivity extends Activity {
 
@@ -10,6 +12,7 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
+		
 	}
 
 	@Override
@@ -18,6 +21,12 @@ public class RegisterActivity extends Activity {
 		getMenuInflater().inflate(R.menu.register, menu);
 		return true;
 	}
+	
+	public void onCancel(View view) {
+		Intent intent = new Intent(this, LoginActivity.class);
+	    startActivity(intent);
+	}
+	
 	
 
 }

@@ -66,6 +66,14 @@
             android:name="com.example.phms.VitalSignsActivity"
             android:label="@string/title_activity_vital_signs" >
         </activity>
+        <activity
+            android:name="com.example.phms.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.phms.EditActivity"
+            android:label="@string/title_activity_edit" >
+        </activity>
     </application>
 
 </manifest>

@@ -18,5 +18,7 @@ public class RecoverActivity extends Activity {
 		getMenuInflater().inflate(R.menu.recover, menu);
 		return true;
 	}
+	
+	
 
 }
