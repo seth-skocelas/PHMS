@@ -121,10 +121,12 @@ Class variables
                     f.setName(cursor.getString(1));
                     f.setQuantity(cursor.getString(2));
                     f.setCaloriesPer(cursor.getString(3));
+                    f.setTimeStamp(cursor.getString(4));
                     // Adding contact to list
                     map.put("food", f.getName());
     				map.put("quan", f.getQuantity());
     				map.put("cal", f.getCaloriesPer());
+    				map.put("id", f.getTimeStamp());
     				mylistData.add(map);
                 } while (cursor.moveToNext());
             }
@@ -186,6 +188,7 @@ Class variables
     	cv.put(KEY_NAME, food.getName());
 		cv.put(KEY_QUANTITY, food.getQuantity());
 		cv.put(KEY_CALORIES_PER, food.getCaloriesPer());
+		cv.put(KEY_TIME, food.getTimeStamp());
 		
 		// Inserting Row
         db.insert(TABLE_FOOD, null, cv);
@@ -221,5 +224,23 @@ Class variables
     }*/
 /*******Methods for FOOD*******************/
 		// Delete a row from the database, by rowId (primary key)
+    
+    public void deleteFood(int timeStamp) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_FOOD, KEY_TIME + " = ?",
+                new String[] { String.valueOf(timeStamp) });
+        db.close();
+    }
+    public int updateContact(int time) {
+        SQLiteDatabase db = this.getWritableDatabase();
+     
+        ContentValues values = new ContentValues();
+        //values.put(KEY_NAME, contact.getName());
+        //values.put(KEY_PH_NO, contact.getPhoneNumber());
+     
+        // updating row
+        return db.update(TABLE_FOOD, values, KEY_TIME + " = ?",
+                new String[] { String.valueOf(time) });
+    }
 
 }

@@ -5,10 +5,10 @@ public class Food
 	private String name;
 	private String quantity;
 	private String caloriesPer;
-	private int timeStamp;
+	private String timeStamp;
 	//constructor
 	public Food(){}
-	public Food(String _name, String _quantity, String _caloriesPer, int _timeStamp)
+	public Food(String _name, String _quantity, String _caloriesPer, String _timeStamp)
 	{
 		this.name = _name;
 		this.quantity = _quantity;
@@ -34,7 +34,7 @@ public class Food
 	{
 		return caloriesPer;
 	}
-	public int getTimeStamp()
+	public String getTimeStamp()
 	{
 		return this.timeStamp;
 	}
@@ -51,7 +51,7 @@ public class Food
 	{
 		this.caloriesPer = _caloriesPer;
 	}
-	public void setTimeStamp(int _timeStamp)
+	public void setTimeStamp(String _timeStamp)
 	{
 		this.timeStamp = _timeStamp;
 	}

@@ -2,6 +2,8 @@ package com.example.phms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -32,8 +34,10 @@ public class FoodEditorActivity extends Activity {
 	// public static ArrayList<String> foodBucket;
 	public String food_main;
 	private ListView list;
-	private ArrayList<HashMap> hlist;
+	private ArrayList<HashMap<String, Object>> hlist;
 	protected dbHelper db;
+	private static int count=0;
+	private int numberToBeDeleted; //not really a number
 	//private dbHelper mDbHelper;
 
 	@Override
@@ -46,9 +50,34 @@ public class FoodEditorActivity extends Activity {
     	db = new dbHelper(this);
 		//displayCalorieText = (TextView) findViewById(R.id.displayCalories);
 		addFoodButton = (Button) findViewById(R.id.add_food_button);
-		//foodBucket = new ArrayList<String>();
-		//mDbHelper.open();
-		populateListViewFromDB();
+		
+		//new code goes here
+		hlist = db.getAllFood();
+		/*
+        for (int a =0; a<hlist.size();a++)
+        {
+            Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
+            Set<String> key = tmpData.keySet();
+            if (a==0)
+            	tmpData.put("id", "blah");
+            Toast.makeText(FoodEditorActivity.this, tmpData.get("id").toString(), Toast.LENGTH_LONG).show();
+            /*Iterator it = key.iterator();
+            while (it.hasNext()) {
+                String hmKey = (String)it.next();
+                Object hmData = tmpData.get(hmKey);
+
+                //System.out.println("Key: "+hmKey +" & Data: "+hmData);
+              
+                it.remove(); // avoids a ConcurrentModificationException
+            }
+
+        }*/
+		
+		
+		
+		//populating from DB when first encountered with activity
+		populateListViewFromDB(hlist);
+		
 		addFoodButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
@@ -104,14 +133,7 @@ public class FoodEditorActivity extends Activity {
 							//SimpleAdapter arrayAdapter = new SimpleAdapter(FoodEditorActivity.this, mylistData, R.layout.display_items, columnTags , columnIds);
 							//list.setAdapter(arrayAdapter);
 							
-							Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), 0);
-							/*long value=0;
-							String test_string = "sdf";
-							Bundle extras = getIntent().getExtras();
-					        if(extras !=null){
-					             value = extras.getLong("id");
-					        }
-							Cursor cursor = dbHelper.fetchById(value);*/
+							Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), (count++ + ""));
 							db.addFood(food_saved);
 							//mDbHelper.close();
 							
@@ -135,7 +157,8 @@ public class FoodEditorActivity extends Activity {
 						else
 						{
 							alert.dismiss();
-							populateListViewFromDB();
+							onResume();
+							//populateListViewFromDB(hlist);
 						}
 					}
 				});
@@ -157,6 +180,102 @@ public class FoodEditorActivity extends Activity {
 			}
 		});
 		
+		//regular click
+		/*
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
+				//values for parsing
+				TextView v = (TextView)findViewById(R.id.foodTV);
+				TextView v1 = (TextView)findViewById(R.id.quanTV);
+				TextView v2 = (TextView)findViewById(R.id.calTV);
+				//this is the value aka reading
+				String content1 =v.getText().toString();
+				//this is the vital sign
+				String content2 =v1.getText().toString();
+				String content3 =v2.getText().toString();
+				
+				//layout code
+				LayoutInflater li = LayoutInflater.from(context);
+				View promptsView = li.inflate(R.layout.display_items, null);
+				
+				 final AlertDialog alert = new AlertDialog.Builder(context)
+				 	.setView(promptsView)
+				 	.setPositiveButton("OK", null)
+				 	.setNegativeButton("Cancel", null)
+				 	.create();
+				 TextView vital = (TextView) promptsView.findViewById(R.id.vital);
+				 
+				 //getting the appropriate values for the string
+				 String str = parent.getItemAtPosition(position).toString();
+				 String delims = "vital=";
+				 String[] tokens = str.split(delims);
+				 StringBuilder str1 = new StringBuilder(tokens[1]);
+				 str1.deleteCharAt(str1.length()-1);
+				 vital.setText(str1);
+				 final EditText reading = (EditText) promptsView.findViewById(R.id.reading);
+				 //Double readValue=0.0;
+				 
+				 //this is where the edit menu shows up
+					alert.setOnShowListener(new DialogInterface.OnShowListener() {
+
+						@Override
+						public void onShow(DialogInterface dialog) {
+						//this is the OK button
+						Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+						b.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View view) 
+							{
+								
+								
+								try {
+									
+									readValue = Double.parseDouble(reading.getText().toString());
+									
+									/*map.put("quan", quanD);
+									map.put("cal", calD);
+									mylistData.add(map);
+									SimpleAdapter arrayAdapter = new SimpleAdapter(ExerciseEditorActivity.this, mylistData, R.layout.display_exercise_items, columnTags , columnIds);
+									list.setAdapter(arrayAdapter);
+									//double result = quanD*calD;
+									displayTotal = (TextView) findViewById(R.id.total);
+									String newTotal = getString(R.string.total_exercise);
+									newTotal = String.format(newTotal, calD);
+									displayTotal.setText(newTotal);
+										
+									} catch (NumberFormatException e) 
+									{
+										//Toast.makeText(FoodEditorActivity.this, "You must fill all fields.", Toast.LENGTH_LONG).show();
+									}
+									//changing the value of string total here
+								
+									
+
+								alert.dismiss();
+							}
+						});
+							//the cancel button
+							Button cancel = alert.getButton(AlertDialog.BUTTON_NEGATIVE);
+							cancel.setOnClickListener(new View.OnClickListener() {
+
+								@Override
+								public void onClick(View view) 
+								{
+		               
+									alert.dismiss();
+								}
+							});
+						}
+					});
+						
+					alert.show();
+}
+
+		});
+		
+		*/
 		//long click
 		list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 	        @Override
@@ -219,9 +338,10 @@ public class FoodEditorActivity extends Activity {
   		return true;
   	}
 	
+    
     private void removeItemFromList(int position) {
         //final int deletePosition = position;
-        
+        final int index = position;
         AlertDialog.Builder alert = new AlertDialog.Builder(
                 FoodEditorActivity.this);
     
@@ -236,6 +356,21 @@ public class FoodEditorActivity extends Activity {
                     //list.remove(deletePosition);
                     //adapter.notifyDataSetChanged();
                     //adapter.notifyDataSetInvalidated();
+        		
+                for (int a =0; a<hlist.size();a++)
+                {
+                    Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
+                    Set<String> key = tmpData.keySet();
+                    if (a==index){
+                    	 numberToBeDeleted = Integer.parseInt(tmpData.get("id").toString());
+                    	 db.deleteFood(numberToBeDeleted);
+                    	 
+                    }
+                   
+                }
+                hlist.remove(index);
+                populateListViewFromDB(hlist);
+                //list.remove(index);
       
             }
         });
@@ -252,14 +387,20 @@ public class FoodEditorActivity extends Activity {
     }
     
     //sets the listview
-	private void populateListViewFromDB() {
+	private void populateListViewFromDB(ArrayList<HashMap<String, Object>> mylistData) {
 		
 		String[] columnTags = new String[] {"food", "quan", "cal"};
 		int[] columnIds = new int[] {R.id.foodTV, R.id.quanTV, R.id.calTV};
-		ArrayList<HashMap<String, Object>> mylistData = db.getAllFood();
+		//ArrayList<HashMap<String, Object>> mylistData = db.getAllFood();
 		SimpleAdapter arrayAdapter = new SimpleAdapter(FoodEditorActivity.this, mylistData, R.layout.display_items, columnTags , columnIds);
 		list.setAdapter(arrayAdapter);
 
+	}
+	@Override
+	protected void onResume() {
+
+	   super.onResume();
+	   this.onCreate(null);
 	}
 
 }
