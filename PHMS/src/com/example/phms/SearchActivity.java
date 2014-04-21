@@ -51,8 +51,12 @@ public class SearchActivity extends Activity {
 	    		alertDialog.setButton(-1,"OK", new DialogInterface.OnClickListener() {
 	    		      public void onClick(DialogInterface dialog, int which) {
 	    		 
-	    		    	  startActivity(new Intent(getBaseContext(),LoginActivity.class));
-	    		 
+	    		    	  
+	    		    	  Intent i = getBaseContext().getPackageManager()
+	    		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+	    		    	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    		    	startActivity(i);
+	    		    	
 	    		    } });
 	    		alertDialog.setButton(-2,"Cancel", new DialogInterface.OnClickListener() {
 	    		      public void onClick(DialogInterface dialog, int which) {
@@ -74,6 +78,10 @@ public class SearchActivity extends Activity {
 		Intent intent = new Intent(this, ResultActivity.class);
 	    startActivity(intent);
 
+	}
+	
+	public void onCancel(View view) {
+		this.finish();
 	}
 	
 	

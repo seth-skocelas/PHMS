@@ -24,7 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/ret"
-        android:onClick="backToResults" />
+        android:onClick="onCancel" />
 
     <ListView
         android:id="@+id/listView1"

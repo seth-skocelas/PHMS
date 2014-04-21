@@ -42,12 +42,13 @@
         android:text="@string/dosage" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textView3"
         android:ems="10"
         android:inputType="text" />
 
@@ -62,7 +63,7 @@
         android:text="@string/unit" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edit_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -70,20 +71,6 @@
         android:layout_toRightOf="@+id/textView6"
         android:ems="10"
         android:inputType="text" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText2"
-        android:layout_alignBottom="@+id/editText2"
-        android:layout_toLeftOf="@+id/textView6"
-        android:layout_toRightOf="@+id/textView4"
-        android:ems="10"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
 
     <Button
         android:id="@+id/button1"
@@ -96,17 +83,8 @@
         android:text="@string/add"
         android:onClick="addConfliction" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="41dp"
-        android:text="@string/conflictions" />
-
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/edit_conflictions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button1"
@@ -133,5 +111,37 @@
         android:layout_alignParentRight="true"
         android:text="@string/save"
         android:onClick="confirmMedication" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button3"
+        android:layout_below="@+id/edit_unit"
+        android:layout_marginTop="36dp"
+        android:text="@string/conflictions" />
+
+    <EditText
+        android:id="@+id/edit_dosage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView5"
+        android:layout_toLeftOf="@+id/textView6"
+        android:layout_toRightOf="@+id/textView4"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_times_per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/edit_conflictions"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

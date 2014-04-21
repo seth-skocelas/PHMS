@@ -58,6 +58,7 @@
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignRight="@+id/textView1"
+        android:layout_toRightOf="@+id/button3"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -66,9 +67,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView4"
+        android:layout_alignLeft="@+id/editText1"
         android:layout_alignRight="@+id/editText1"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="text" >
+
+        <requestFocus />
+
+    </EditText>
 
     <Button
         android:id="@+id/button3"

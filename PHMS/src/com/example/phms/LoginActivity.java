@@ -15,15 +15,16 @@ public class LoginActivity extends Activity {
 	private static final int BUTTON_POSITIVE = -1;
 	private static final int BUTTON_NEGATIVE = -2;
 	
+	
+    
 
-
-
+	dbHelper db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
+
 		
 	}
 
@@ -67,7 +68,9 @@ public class LoginActivity extends Activity {
 	
 	alertDialog.show();
 	
+	
 }
 
 
+	
 }

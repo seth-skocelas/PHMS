@@ -13,6 +13,7 @@ public class MainMenuActivity extends Activity {
 	
 	private static final int BUTTON_POSITIVE = -1;
 	private static final int BUTTON_NEGATIVE = -2;
+	int test = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,17 @@ public class MainMenuActivity extends Activity {
     	    startActivity(intent2);
     		break;
     	case R.id.action_logout:
+    		
     		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
     		alertDialog.setTitle("Logout");
     		alertDialog.setMessage("Are you sure you want to logout?");
     		alertDialog.setButton(BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
     		      public void onClick(DialogInterface dialog, int which) {
-    		 
-    		    	  startActivity(new Intent(getBaseContext(),LoginActivity.class));
+    		    	  
+    		    	  Intent i = getBaseContext().getPackageManager()
+    		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+    		    	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    		    	startActivity(i);
     		 
     		    } });
     		alertDialog.setButton(BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener() {
@@ -65,6 +70,10 @@ public class MainMenuActivity extends Activity {
 	
 	public void displayDiet(View view) {
 		Intent intent = new Intent(this, DietActivity.class);
+	    startActivity(intent);
+	}
+	public void displayVital(View view) {
+		Intent intent = new Intent(this, VitalSignsActivity.class);
 	    startActivity(intent);
 	}
 	public void displayMenu(View view) {
@@ -98,7 +107,10 @@ public class MainMenuActivity extends Activity {
 		alertDialog.setButton(BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		 
-		    	  startActivity(new Intent(getBaseContext(),LoginActivity.class));
+		    	  Intent i = getBaseContext().getPackageManager()
+		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+		    	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		    	startActivity(i);
 		 
 		    } });
 		alertDialog.setButton(BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener() {

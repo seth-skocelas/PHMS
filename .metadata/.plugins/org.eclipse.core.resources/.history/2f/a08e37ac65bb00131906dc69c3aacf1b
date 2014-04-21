@@ -1,6 +1,0 @@
-import android.app.DialogFragment;
-
-
-public class AlertDialogFragment extends DialogFragment {
-
-}

@@ -43,8 +43,11 @@ public class MedicationActivity extends Activity {
 	    		alertDialog.setButton(-1,"OK", new DialogInterface.OnClickListener() {
 	    		      public void onClick(DialogInterface dialog, int which) {
 	    		 
-	    		    	  startActivity(new Intent(getBaseContext(),LoginActivity.class));
-	    		 
+	    		    	  Intent i = getBaseContext().getPackageManager()
+	    		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+	    		    	  i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    		    	  startActivity(i);
+	    		    	  
 	    		    } });
 	    		alertDialog.setButton(-2,"Cancel", new DialogInterface.OnClickListener() {
 	    		      public void onClick(DialogInterface dialog, int which) {
@@ -62,8 +65,7 @@ public class MedicationActivity extends Activity {
 
 	
 	public void returnMenu(View view) {
-		Intent intent = new Intent(this, MainMenuActivity.class);
-	    startActivity(intent);
+		this.finish();
 	}
 	
 	public void addMedication(View view) {

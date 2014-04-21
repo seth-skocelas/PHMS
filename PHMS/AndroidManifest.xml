@@ -8,6 +8,8 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -67,12 +69,36 @@
             android:label="@string/title_activity_vital_signs" >
         </activity>
         <activity
+            android:name="com.example.phms.TestActivity"
+            android:label="@string/title_activity_test" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AddAlertActivity"
+            android:label="@string/title_activity_add_alert" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AlarmReceiverActivity"
+            android:label="@string/title_activity_alarm_receiver" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AlertActivity"
+            android:label="@string/title_activity_alert" >
+        </activity>
+        <activity
+            android:name="com.example.phms.CommunicationsActivity"
+            android:label="@string/title_activity_communications" >
+        </activity>
+        <activity
+            android:name="com.example.phms.RepeatingAlarmActivity"
+            android:label="@string/title_activity_repeating_alarm" >
+        </activity>
+        <activity
             android:name="com.example.phms.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.example.phms.EditActivity"
-            android:label="@string/title_activity_edit" >
+            android:name="com.example.phms.EditAccountActivity"
+            android:label="@string/title_activity_edit_account" >
         </activity>
     </application>
 

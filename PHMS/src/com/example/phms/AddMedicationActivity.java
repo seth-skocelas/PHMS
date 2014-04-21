@@ -8,15 +8,37 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class AddMedicationActivity extends Activity {
 	private static final int BUTTON_POSITIVE = -1;
 	private static final int BUTTON_NEGATIVE = -2;
 
+	public EditText name;
+	public EditText times_per;
+	public EditText dosage;
+	public EditText unit;
+	public EditText conflictions;
+	dbHelper mDbHelper;
+	String [] currentConflictions = new String[10];
+	public static String strSeparator = "__,__";
+	int numC = 0;
+	String conflictionList;
+
+	
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_medication);
+		name = (EditText) findViewById(R.id.edit_name);
+	    times_per = (EditText) findViewById(R.id.edit_times_per);
+		dosage = (EditText) findViewById(R.id.edit_dosage);
+	    unit = (EditText) findViewById(R.id.edit_unit);
+		conflictions = (EditText) findViewById(R.id.edit_conflictions);
+		mDbHelper = new dbHelper(getBaseContext());
+		
 	}
 
 	@Override
@@ -45,8 +67,10 @@ public class AddMedicationActivity extends Activity {
 	    		alertDialog.setButton(BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
 	    		      public void onClick(DialogInterface dialog, int which) {
 	    		 
-	    		    	  startActivity(new Intent(getBaseContext(),LoginActivity.class));
-	    		 
+	    		    	  Intent i = getBaseContext().getPackageManager()
+	    		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+	    		    	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    		    	startActivity(i);
 	    		    } });
 	    		alertDialog.setButton(BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener() {
 	    		      public void onClick(DialogInterface dialog, int which) {
@@ -63,8 +87,7 @@ public class AddMedicationActivity extends Activity {
 	  	}
 	
 	public void cancelMedication(View view) {
-		Intent intent = new Intent(this, MedicationActivity.class);
-	    startActivity(intent);
+		this.finish();
 	}
 	
 	public void confirmMedication(View view) {
@@ -75,14 +98,25 @@ public class AddMedicationActivity extends Activity {
 		alertDialog.setMessage("Are you sure you want to save this medication?");
 		alertDialog.setButton(BUTTON_POSITIVE,"Yes", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
+		    	  
+		    	  
+		    	  String a = name.getText().toString();
+		    	  int b = Integer.parseInt(times_per.getText().toString());
+		    	  int c = Integer.parseInt(dosage.getText().toString());
+		    	  String d = unit.getText().toString();
+		    	  conflictionList = convertArrayToString(currentConflictions);
+		    	  
+		    	  Medicine currentMedicine = new Medicine(a,a,b,c,d,conflictionList);
+		  		  mDbHelper.addMedicine(currentMedicine);
+		  		  mDbHelper.close();
 		 
-		    	  startActivity(new Intent(getBaseContext(),MedicationActivity.class));
+		    	  AddMedicationActivity.this.finish();
 		 
 		    } });
 		alertDialog.setButton(BUTTON_NEGATIVE,"No", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		 
-		    	  startActivity(new Intent(getBaseContext(),MedicationActivity.class));
+		    	 
 		 
 		    } });
 		
@@ -98,6 +132,10 @@ public class AddMedicationActivity extends Activity {
 		alertDialog.setMessage("Are you sure you want to add this Confliction?");
 		alertDialog.setButton(BUTTON_POSITIVE,"Yes", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
+		    	  
+		    	  String e = conflictions.getText().toString();
+		    	  currentConflictions[numC] = e;
+		    	  numC++;
 		 
 
 		 
@@ -111,6 +149,22 @@ public class AddMedicationActivity extends Activity {
 		
 		alertDialog.show();
 		
+	}
+	
+	public static String convertArrayToString(String[] array){
+	    String str = "";
+	    for (int i = 0;i<array.length; i++) {
+	        str = str+array[i];
+	        // Do not append comma at the end of last element
+	        if(i<array.length-1){
+	            str = str+strSeparator;
+	        }
+	    }
+	    return str;
+	}
+	public static String[] convertStringToArray(String str){
+	    String[] arr = str.split(strSeparator);
+	    return arr;
 	}
 	
 
