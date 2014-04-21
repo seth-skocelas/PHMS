@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/vitalSignLetter"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Vital Sign: "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/readingSignLetter"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Reading: "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="What is your reading?"
+            android:inputType="numberDecimal"
+            android:textSize="16sp" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+
+</LinearLayout>

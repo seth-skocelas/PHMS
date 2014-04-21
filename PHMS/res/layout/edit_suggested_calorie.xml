@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suggestedCalorie_test"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    <RadioButton
+        android:id="@+id/radioButton_little_to_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/little_to_noExcersice" />
+
+    <RadioButton
+        android:id="@+id/radioButton_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/light_exercise" />
+
+    <RadioButton
+        android:id="@+id/radioButton_moderate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/moderate_exercise" />
+
+    <RadioButton
+        android:id="@+id/radioButton_heavy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heavy_exercise" />
+
+    <RadioButton
+        android:id="@+id/radioButton_very_heavy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/very_heavy_exercise" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/add_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="display_food_editor"
+            android:text="Edit Food"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="display_exercise_editor"
+            android:text="Edit Exercise"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
