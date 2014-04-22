@@ -1,5 +1,10 @@
 package com.example.phms;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,13 +13,44 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class MedicationActivity extends Activity {
 
+	private ListView list;
+	private ArrayList<HashMap<String, Object>> hlist;
+	protected dbHelper db;
+	private static int count=0;
+	private int numberToBeDeleted;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_medication);
+		list = (ListView) findViewById(R.id.med_list);
+    	list.setEmptyView(findViewById(R.id.empty));
+    	//mDbHelper = new dbHelper(context);
+    	db = new dbHelper(this);
+    	hlist = db.getAllMedicine();
+    	populateListViewFromDB(hlist);
+    	
+    	
+		list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+	        @Override
+	        public boolean onItemLongClick(AdapterView<?> arg0, View v, int index, long arg3) {
+	        	//Log.d("in onLongClick");
+                String str=list.getItemAtPosition(index).toString();
+                removeItemFromList(index);
+                //Toast.makeText(getApplicationContext(),str , Toast.LENGTH_LONG).show();
+                //Log.d("long click : " +str);
+               return true;
+	        		}
+			});
+    	
+    	
 	}
 
 	@Override
@@ -62,6 +98,16 @@ public class MedicationActivity extends Activity {
 	    	
 	  		return true;
 	  	}
+	 
+	private void populateListViewFromDB(ArrayList<HashMap<String, Object>> mylistData) {
+			
+			String[] columnTags = new String[] {"name", "quant", "unit"};
+			int[] columnIds = new int[] {R.id.nameTV, R.id.quantTV, R.id.unitTV};
+			//ArrayList<HashMap<String, Object>> mylistData = db.getAllFood();
+			SimpleAdapter arrayAdapter = new SimpleAdapter(MedicationActivity.this, mylistData, R.layout.display_med_items, columnTags , columnIds);
+			list.setAdapter(arrayAdapter);
+
+		}
 
 	
 	public void returnMenu(View view) {
@@ -71,6 +117,59 @@ public class MedicationActivity extends Activity {
 	public void addMedication(View view) {
 		Intent intent = new Intent(this, AddMedicationActivity.class);
 	    startActivity(intent);
+	    this.finish();
+
 	}
+	
+    private void removeItemFromList(int position) {
+        //final int deletePosition = position;
+        final int index = position;
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                MedicationActivity.this);
+    
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete this item?");
+        alert.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TOD O Auto-generated method stub
+                    
+                    // main code on after clicking yes
+                    //list.remove(deletePosition);
+                    //adapter.notifyDataSetChanged();
+                    //adapter.notifyDataSetInvalidated();
+        		
+                for (int a =0; a<hlist.size();a++)
+                {
+                    Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
+                    Set<String> key = tmpData.keySet();
+                    if (a==index){
+                    	 numberToBeDeleted = Integer.parseInt(tmpData.get("id").toString());
+                    	 db.deleteMedicine(numberToBeDeleted);
+                    	 
+                    }
+                   
+                }
+                hlist.remove(index);
+                populateListViewFromDB(hlist);
+                //list.remove(index);
+      
+            }
+        });
+        alert.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+      
+        alert.show();
+      
+    }
+	
+	
+	
+	
 
 }

@@ -35,12 +35,43 @@
         android:text="@string/ret" 
         android:onClick="returnMenu"/>
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="24dp"
+        android:text="Unit"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/button2"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/textView4"
+        android:text="Quantity"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/med_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button1"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true" >
 
     </ListView>

@@ -54,6 +54,8 @@ Class variables
 	static final String KEY_DOSAGE = "dosage";
 	static final String KEY_UNIT = "unit";
 	static final String KEY_CONFLICTIONS = "conflictions";
+	static final String KEY_ID = "id";
+	
 	
 	private static final String SQL_CREATE_USER_TABLE =
 		    "CREATE TABLE " + TABLE_USER + " (" 
@@ -74,8 +76,8 @@ Class variables
 	
 	private static final String SQL_CREATE_MEDICINE_TABLE = 
 			"CREATE TABLE " + TABLE_MEDICINE + " ("
-					+ KEY_MUSER + " TEXT PRIMARY KEY," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
-					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT" + " )";
+					+ KEY_MUSER + " TEXT," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
+					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT" + " )";
 	
 
 //constructor
@@ -207,9 +209,59 @@ Class variables
     	cv.put(KEY_DOSAGE, medicine.getDosage());
     	cv.put(KEY_UNIT, medicine.getUnit());
     	cv.put(KEY_CONFLICTIONS, medicine.getConflictions());
+    	cv.put(KEY_ID, medicine.getID());
     	
     	db.insert(TABLE_MEDICINE, null, cv);
     	
+    }
+    
+    public void deleteMedicine(int timeStamp) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
+                new String[] { String.valueOf(timeStamp) });
+        db.close();
+    }
+    
+    
+    public  ArrayList<HashMap<String, Object>> getAllMedicine() {
+    	
+
+		ArrayList<HashMap<String, Object>> mylistData = new ArrayList<HashMap<String, Object>>();
+		//HashMap<String,Object> map = new HashMap<String, Object>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_MEDICINE;
+     
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+     
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+            	HashMap<String,Object> map = new HashMap<String, Object>();
+                Medicine m = new Medicine();
+                //f.setID(Integer.parseInt(cursor.getString(0)));
+                m.setUserName(cursor.getString(0));
+                m.setName(cursor.getString(1));
+                m.setTimesPer(Integer.parseInt(cursor.getString(2)));
+                m.setDosage(Integer.parseInt(cursor.getString(3)));
+                m.setUnit(cursor.getString(4));
+                m.setConflictions(cursor.getString(5));
+                m.setID(cursor.getString(6));
+                // Adding contact to list
+                map.put("user", m.getUserName());
+				map.put("name", m.getName());
+				map.put("times", m.getTimesPer());
+				map.put("quant", m.getDosage());
+				map.put("unit", m.getUnit());
+				map.put("con", m.getConflictions());
+				map.put("id", m.getID());
+				
+				mylistData.add(map);
+            } while (cursor.moveToNext());
+        }
+     
+        // return contact list
+        return mylistData;
     }
     
     /*

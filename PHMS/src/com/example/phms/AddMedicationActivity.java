@@ -1,14 +1,26 @@
 package com.example.phms;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddMedicationActivity extends Activity {
 	private static final int BUTTON_POSITIVE = -1;
@@ -19,11 +31,15 @@ public class AddMedicationActivity extends Activity {
 	public EditText dosage;
 	public EditText unit;
 	public EditText conflictions;
+	final Context context = this;
+	private static int count=0;
 	dbHelper mDbHelper;
 	String [] currentConflictions = new String[10];
 	public static String strSeparator = "__,__";
 	int numC = 0;
 	String conflictionList;
+	private Button viewConButton;
+	private ListView cList;
 
 	
 
@@ -38,6 +54,59 @@ public class AddMedicationActivity extends Activity {
 	    unit = (EditText) findViewById(R.id.edit_unit);
 		conflictions = (EditText) findViewById(R.id.edit_conflictions);
 		mDbHelper = new dbHelper(getBaseContext());
+		viewConButton = (Button) findViewById(R.id.view_con_button);
+		
+		
+		viewConButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				
+				LayoutInflater li = LayoutInflater.from(context);
+				View promptsView = li.inflate(R.layout.confliction_object, null);
+				cList = (ListView) promptsView.findViewById(R.id.con_list);
+				setCon();
+				
+				
+				
+				
+				
+
+ 
+				final AlertDialog alert = new AlertDialog.Builder(context)
+ 
+				.setView(promptsView)
+				.setNegativeButton("Cancel", null)
+				.create();
+				
+				
+ 
+				 
+				// set dialog message
+				
+				
+				alert.setOnShowListener(new DialogInterface.OnShowListener() {
+
+				@Override
+				public void onShow(DialogInterface dialog) {
+
+				
+					
+					Button cancel = alert.getButton(AlertDialog.BUTTON_NEGATIVE);
+					cancel.setOnClickListener(new View.OnClickListener() {
+
+						@Override
+						public void onClick(View view) 
+						{
+               
+							alert.dismiss();
+						}
+					});
+				}
+			});
+				
+			alert.show();	
+			}
+		});
 		
 	}
 
@@ -106,11 +175,11 @@ public class AddMedicationActivity extends Activity {
 		    	  String d = unit.getText().toString();
 		    	  conflictionList = convertArrayToString(currentConflictions);
 		    	  
-		    	  Medicine currentMedicine = new Medicine(a,a,b,c,d,conflictionList);
+		    	  Medicine currentMedicine = new Medicine(a,a,b,c,d,conflictionList,(count++ + ""));
 		  		  mDbHelper.addMedicine(currentMedicine);
 		  		  mDbHelper.close();
-		 
-		    	  AddMedicationActivity.this.finish();
+		  		  
+		    	  endActivity();
 		 
 		    } });
 		alertDialog.setButton(BUTTON_NEGATIVE,"No", new DialogInterface.OnClickListener() {
@@ -167,5 +236,33 @@ public class AddMedicationActivity extends Activity {
 	    return arr;
 	}
 	
+	private void populateListViewFromDB(String[] myListData) {
+		
+		ArrayAdapter<String> itemsAdapter = 
+			    new ArrayAdapter<String>(this, R.layout.display_conflictions, myListData);
+		cList.setAdapter(itemsAdapter);
+
+	}
+	
+	
+	public void endActivity() {
+	
+		Intent intent = new Intent(this, MedicationActivity.class);
+	    startActivity(intent);
+		AddMedicationActivity.this.finish();
+	}
+	
+	public void setCon() {
+		ArrayAdapter<String> itemsAdapter = 
+			    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, currentConflictions);
+		cList.setAdapter(itemsAdapter);
+	}
+	
+	@Override
+	public void onBackPressed() {
+	
+		endActivity();
+	    
+	}
 
 }

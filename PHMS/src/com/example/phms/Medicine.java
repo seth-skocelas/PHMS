@@ -9,15 +9,20 @@ public class Medicine
 	private int dosage;
 	private String unit;
 	private String conflictions;
+	private String id;
 	
-	public Medicine (String _username, String _name, int _timesPer, int _dosage, String _unit, String _conflictions)
+	public Medicine (String _username, String _name, int _timesPer, int _dosage, String _unit, String _conflictions, String _id)
 	{
 		this.username = _username;
 		this.name = _name;
 		this.timesPer = _timesPer;
 		this.dosage = _dosage;
 		this.unit = _unit;
-		this.conflictions = _conflictions;				 		//create own class maybe
+		this.conflictions = _conflictions;
+		this.id = _id;//create own class maybe
+	}
+	public Medicine() {
+		// TODO Auto-generated constructor stub
 	}
 	//getters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	public String getUserName()
@@ -44,7 +49,15 @@ public class Medicine
 	{
 		return this.conflictions;
 	}
+	public String getID()
+	{
+		return this.id;
+	}
 	//setters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+	public void setID(String _id)
+	{
+		this.id = _id;
+	}
 	public void setUserName(String _username)
 	{
 		this.username = _username;
