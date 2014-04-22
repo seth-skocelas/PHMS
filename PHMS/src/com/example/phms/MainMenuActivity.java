@@ -6,14 +6,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 public class MainMenuActivity extends Activity {
 	
 	private static final int BUTTON_POSITIVE = -1;
 	private static final int BUTTON_NEGATIVE = -2;
-	int test = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,52 +26,8 @@ public class MainMenuActivity extends Activity {
 		return true;
 	}
 	
-    @Override
-  	public boolean onOptionsItemSelected(MenuItem item){
-    	// same as using a normal menu
-    	switch(item.getItemId()) {
-    	case R.id.action_settings:
-    		Intent intent = new Intent(this, SettingsActivity.class);
-    	    startActivity(intent);
-    		break;
-    	case R.id.action_search:
-    		Intent intent2 = new Intent(this, SearchActivity.class);
-    	    startActivity(intent2);
-    		break;
-    	case R.id.action_logout:
-    		
-    		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-    		alertDialog.setTitle("Logout");
-    		alertDialog.setMessage("Are you sure you want to logout?");
-    		alertDialog.setButton(BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
-    		      public void onClick(DialogInterface dialog, int which) {
-    		    	  
-    		    	  Intent i = getBaseContext().getPackageManager()
-    		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
-    		    	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    		    	startActivity(i);
-    		 
-    		    } });
-    		alertDialog.setButton(BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener() {
-    		      public void onClick(DialogInterface dialog, int which) {
-    		 
-
-    		    	  
-    		    } });
-    		alertDialog.show();
-    		break;
-    	
-    	}
-    	
-  		return true;
-  	}
-	
 	public void displayDiet(View view) {
 		Intent intent = new Intent(this, DietActivity.class);
-	    startActivity(intent);
-	}
-	public void displayVital(View view) {
-		Intent intent = new Intent(this, VitalSignsActivity.class);
 	    startActivity(intent);
 	}
 	public void displayMenu(View view) {
@@ -92,10 +46,9 @@ public class MainMenuActivity extends Activity {
 	    startActivity(intent);
 
 	}
-	
-	public void displaySettings(View view) {
-		Intent intent = new Intent(this, SettingsActivity.class);
-	    startActivity(intent);
+	public void DisplaySms(View view){
+		Intent intent = new Intent(this, CommunicationActivity.class);
+		startActivity(intent);
 	}
 	
 	public void LogOut(View view) {
@@ -107,10 +60,7 @@ public class MainMenuActivity extends Activity {
 		alertDialog.setButton(BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		 
-		    	  Intent i = getBaseContext().getPackageManager()
-		    	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
-		    	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		    	startActivity(i);
+		    	  startActivity(new Intent(getBaseContext(),LoginActivity.class));
 		 
 		    } });
 		alertDialog.setButton(BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener() {
@@ -122,6 +72,12 @@ public class MainMenuActivity extends Activity {
 		alertDialog.show();
 		
 	}
+	public void startDiet(View view) {
+		
+		Intent intent = new Intent(this, DietActivity.class);
+	    startActivity(intent);
+
+}
 	
 
 }

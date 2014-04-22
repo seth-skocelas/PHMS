@@ -52,29 +52,7 @@ public class FoodEditorActivity extends Activity {
 		addFoodButton = (Button) findViewById(R.id.add_food_button);
 		
 		//new code goes here
-		hlist = db.getAllFood();
-		/*
-        for (int a =0; a<hlist.size();a++)
-        {
-            Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
-            Set<String> key = tmpData.keySet();
-            if (a==0)
-            	tmpData.put("id", "blah");
-            Toast.makeText(FoodEditorActivity.this, tmpData.get("id").toString(), Toast.LENGTH_LONG).show();
-            /*Iterator it = key.iterator();
-            while (it.hasNext()) {
-                String hmKey = (String)it.next();
-                Object hmData = tmpData.get(hmKey);
-
-                //System.out.println("Key: "+hmKey +" & Data: "+hmData);
-              
-                it.remove(); // avoids a ConcurrentModificationException
-            }
-
-        }*/
-		
-		
-		
+		hlist = db.getAllFood();		
 		//populating from DB when first encountered with activity
 		populateListViewFromDB(hlist);
 		
@@ -112,30 +90,15 @@ public class FoodEditorActivity extends Activity {
 					@Override
 					public void onClick(View view) 
 					{
-						
-						/*	 
-						String[] columnTags = new String[] {"food", "quan", "cal"};
-						int[] columnIds = new int[] {R.id.foodTV, R.id.quanTV, R.id.calTV};
-						ArrayList<HashMap<String, Object>> mylistData = new ArrayList<HashMap<String, Object>>();
-						HashMap<String,Object> map = new HashMap<String, Object>();
-						*/	
-							
-						//Adding elements to the list right here
-						//map.put("food", food.getText().toString());
 						double quanD = 0;
 						double calD=0;
 						try {
 							quanD = Double.parseDouble(quantity.getText().toString());
 							calD = Double.parseDouble(calories.getText().toString());
-							//map.put("quan", quanD);
-							//map.put("cal", calD);
-							//mylistData.add(map);
-							//SimpleAdapter arrayAdapter = new SimpleAdapter(FoodEditorActivity.this, mylistData, R.layout.display_items, columnTags , columnIds);
-							//list.setAdapter(arrayAdapter);
+							String string = (new Time()).toString();
 							
-							Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), (count++ + ""));
+							Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), string);
 							db.addFood(food_saved);
-							//mDbHelper.close();
 							
 							double result = quanD*calD;
 							displayTotal = (TextView) findViewById(R.id.total);
@@ -181,10 +144,12 @@ public class FoodEditorActivity extends Activity {
 		});
 		
 		//regular click
-		/*
+		
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
+				//setting this final so I can use in the onClick
+				final int index = position;
 				//values for parsing
 				TextView v = (TextView)findViewById(R.id.foodTV);
 				TextView v1 = (TextView)findViewById(R.id.quanTV);
@@ -197,23 +162,26 @@ public class FoodEditorActivity extends Activity {
 				
 				//layout code
 				LayoutInflater li = LayoutInflater.from(context);
-				View promptsView = li.inflate(R.layout.display_items, null);
+				View promptsView = li.inflate(R.layout.food_object, null);
 				
 				 final AlertDialog alert = new AlertDialog.Builder(context)
 				 	.setView(promptsView)
 				 	.setPositiveButton("OK", null)
 				 	.setNegativeButton("Cancel", null)
 				 	.create();
-				 TextView vital = (TextView) promptsView.findViewById(R.id.vital);
-				 
+				 //TextView vital = (TextView) promptsView.findViewById(R.id.vital);
+				 final EditText food_reading = (EditText) promptsView.findViewById(R.id.food_text);
+				 final EditText quantity_reading = (EditText) promptsView.findViewById(R.id.quantity_text);
+				 final EditText calorie_reading = (EditText) promptsView.findViewById(R.id.calorie_text);
 				 //getting the appropriate values for the string
 				 String str = parent.getItemAtPosition(position).toString();
-				 String delims = "vital=";
+				 String delims = "[,=}]";
 				 String[] tokens = str.split(delims);
-				 StringBuilder str1 = new StringBuilder(tokens[1]);
-				 str1.deleteCharAt(str1.length()-1);
-				 vital.setText(str1);
-				 final EditText reading = (EditText) promptsView.findViewById(R.id.reading);
+				 food_reading.setText(new StringBuilder(tokens[5]));
+				 quantity_reading.setText(new StringBuilder(tokens[3]));
+				 calorie_reading.setText(new StringBuilder(tokens[7]));
+				//Toast.makeText(getApplicationContext(), str , Toast.LENGTH_LONG).show();
+				//Toast.makeText(getApplicationContext(), str1 , Toast.LENGTH_LONG).show();
 				 //Double readValue=0.0;
 				 
 				 //this is where the edit menu shows up
@@ -228,32 +196,28 @@ public class FoodEditorActivity extends Activity {
 							@Override
 							public void onClick(View view) 
 							{
+								double quanD = Double.parseDouble(quantity_reading.getText().toString());
+								double calD = Double.parseDouble(calorie_reading.getText().toString());
+								int id=0;
+				                for (int a =0; a<hlist.size();a++)
+				                {
+				                    Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
+				                   // Set<String> key = tmpData.keySet();	
+				                    if (a==index){
+				                    	 id = Integer.parseInt(tmpData.get("id").toString());
+				                    	 //Toast.makeText(FoodEditorActivity.this, id+"" , Toast.LENGTH_LONG).show();
+				                    	 
+				                    }
+				                   
+				                }
+								
+								Food food_saved = new Food(food_reading.getText().toString(),quantity_reading.getText().toString(), calorie_reading.getText().toString(), (id+""));
 								
 								
-								try {
-									
-									readValue = Double.parseDouble(reading.getText().toString());
-									
-									/*map.put("quan", quanD);
-									map.put("cal", calD);
-									mylistData.add(map);
-									SimpleAdapter arrayAdapter = new SimpleAdapter(ExerciseEditorActivity.this, mylistData, R.layout.display_exercise_items, columnTags , columnIds);
-									list.setAdapter(arrayAdapter);
-									//double result = quanD*calD;
-									displayTotal = (TextView) findViewById(R.id.total);
-									String newTotal = getString(R.string.total_exercise);
-									newTotal = String.format(newTotal, calD);
-									displayTotal.setText(newTotal);
-										
-									} catch (NumberFormatException e) 
-									{
-										//Toast.makeText(FoodEditorActivity.this, "You must fill all fields.", Toast.LENGTH_LONG).show();
-									}
-									//changing the value of string total here
-								
-									
-
+								db.updateFood(food_saved);
+								onResume();
 								alert.dismiss();
+							
 							}
 						});
 							//the cancel button
@@ -275,7 +239,7 @@ public class FoodEditorActivity extends Activity {
 
 		});
 		
-		*/
+		
 		//long click
 		list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 	        @Override

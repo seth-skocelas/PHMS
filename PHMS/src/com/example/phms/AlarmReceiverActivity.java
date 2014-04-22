@@ -1,6 +1,9 @@
+//alarmreceiveractivity.java
 package com.example.phms;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,14 +15,17 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class AlarmReceiverActivity extends Activity{
 	private PowerManager.WakeLock mWakeLock;
 	private MediaPlayer mMediaPlayer;
+	private Timer timer;
+	
 
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -37,12 +43,15 @@ public class AlarmReceiverActivity extends Activity{
 		setContentView(R.layout.activity_alarm_screen);
 		
 		Button stopAlarm = (Button) findViewById(R.id.btnStop);
-		
+		//delaySms();
 		stopAlarm.setOnClickListener(new OnClickListener(){
 			public void onClick(View arg0)
 			{
 				mMediaPlayer.stop();
 				finish();
+				//add toast
+				//cancel delay timer
+				//timer.cancel();
 			}
 		});
 		playSound(this, getAlarmUri());
@@ -66,6 +75,29 @@ public class AlarmReceiverActivity extends Activity{
 		{
 			Log.i("AlarmReceiver", "No audio file found");
 		}
+	}
+	
+	private void delaySms(){
+		timer = new Timer();
+		
+		final CommunicationActivity ca = new CommunicationActivity();
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+				ca.sendSms();
+				Toast.makeText(AlarmReceiverActivity.this, "send", Toast.LENGTH_LONG).show();
+				
+			}
+			
+		};
+		timer.scheduleAtFixedRate(timerTask, 0, 10 * 1000);
+		Toast.makeText(AlarmReceiverActivity.this, "reach delay sms", Toast.LENGTH_LONG).show();
+		
+		
+		
 	}
 	
 	private Uri getAlarmUri()
