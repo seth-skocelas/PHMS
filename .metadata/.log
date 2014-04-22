@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 !SESSION 2014-04-21 18:44:25.426 -----------------------------------------------
 eclipse.buildId=v22.3.0-887826
 java.version=1.7.0_07
@@ -7,6 +8,17 @@ Framework arguments:  -product com.android.ide.eclipse.adt.package.product
 Command-line arguments:  -data C:\Users\Jesus\Documents\GitHub\PHMS -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2014-04-21 18:45:22.041
+=======
+!SESSION 2014-04-22 00:14:01.938 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-04-22 00:14:40.846
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE 
 !STACK 1
 org.eclipse.core.internal.resources.ResourceException: Resource '/PHMS/res' does not exist.
@@ -14,6 +26,7 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/PHMS/res' does
 	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:215)
 	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
 	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+<<<<<<< HEAD
 	at com.android.ide.eclipse.adt.internal.sdk.Sdk$7.run(Sdk.java:1453)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 !SUBENTRY 1 org.eclipse.core.resources 4 368 2014-04-21 18:45:22.044
@@ -30,19 +43,84 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !ENTRY org.eclipse.egit.ui 2 0 2014-04-21 18:45:24.491
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Jesus'. If this is
+=======
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$7.run(Sdk.java:1485)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2014-04-22 00:14:40.846
+!MESSAGE Resource '/PHMS/res' does not exist.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 00:14:41.411
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 00:26:47.322 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 00:26:58.815
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 00:30:29.629 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-04-22 00:30:35.749
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 00:30:41.117
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 00:44:20.848 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 00:44:33.955
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 2 0 2014-04-21 22:39:19.359
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+!ENTRY org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+I:
 Binding(CTRL+I,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.indent,Correct Indentation,
 		Corrects the indentation of the selected lines,
 		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@308c9d2a,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5e279078,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -50,17 +128,29 @@ Binding(CTRL+I,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.active.elements,Format Active Elements,
 		Format active elements,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@4aaefe47,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@30aad575,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+F:
 Binding(CTRL+SHIFT+F,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.format,Format,
 		Format the selected text,
 		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@5fa2494c,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@777de692,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -68,17 +158,29 @@ Binding(CTRL+SHIFT+F,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.document,Format,
 		Format selection,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@47bca037,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6b1b8aad,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_DOWN:
 Binding(CTRL+SHIFT+ARROW_DOWN,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.next.member,Go to Next Member,
 		Move the caret to the next member of the compilation unit,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@177a4da1,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6aacb887,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -86,17 +188,29 @@ Binding(CTRL+SHIFT+ARROW_DOWN,
 	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.nextSibling,Next Sibling,
 		Go to Next Sibling,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@d2dd924,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2648e756,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for ALT+SHIFT+ARROW_LEFT:
 Binding(ALT+SHIFT+ARROW_LEFT,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.previous,Select Previous Element,
 		Expand selection to include previous sibling,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@5e7e9111,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7186ddc7,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -104,17 +218,29 @@ Binding(ALT+SHIFT+ARROW_LEFT,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.previous,Select Previous Element,
 		Expand selection to include previous sibling,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@35595b31,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d8aa36a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for ALT+SHIFT+ARROW_UP:
 Binding(ALT+SHIFT+ARROW_UP,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.enclosing,Select Enclosing Element,
 		Expand selection to include enclosing element,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@4766238e,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4d4a6e0b,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -122,17 +248,29 @@ Binding(ALT+SHIFT+ARROW_UP,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.enclosing,Select Enclosing Element,
 		Expand selection to include enclosing element,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@6afdc6da,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@337e8f95,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+P:
 Binding(CTRL+SHIFT+P,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.matching.bracket,Go to Matching Bracket,
 		Moves the cursor to the matching bracket,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@2a86441,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@517ebbd1,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -140,17 +278,29 @@ Binding(CTRL+SHIFT+P,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.goto.matching.bracket,Matching Character,
 		Go to Matching Character,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@75c3aa36,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3bb87f27,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+/:
 Binding(CTRL+SHIFT+/,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.add.block.comment,Add Block Comment,
 		Enclose the selection with a block comment,
 		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@7d4de8c3,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@575cc023,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -158,17 +308,29 @@ Binding(CTRL+SHIFT+/,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.add.block.comment,Add Block Comment,
 		Add Block Comment,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@53d2e924,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2dd5a2f2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+O:
 Binding(CTRL+O,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.show.outline,Quick Outline,
 		Show the quick outline for the editor input,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@5ec9a7a,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@a4a66a4,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -176,17 +338,29 @@ Binding(CTRL+O,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.quick_outline,Quick Outline,
 		Show the quick outline for the editor input,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@7091c29f,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.360
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1a989e43,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_UP:
 Binding(CTRL+SHIFT+ARROW_UP,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.previous.member,Go to Previous Member,
 		Move the caret to the previous member of the compilation unit,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@71808e75,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@19be4e59,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -194,17 +368,29 @@ Binding(CTRL+SHIFT+ARROW_UP,
 	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.previousSibling,Previous Sibling,
 		Go to Previous Sibling,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@e4618aa,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.361
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7a630a2c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for ALT+SHIFT+ARROW_DOWN:
 Binding(ALT+SHIFT+ARROW_DOWN,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.last,Restore Last Selection,
 		Restore last selection,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@2f08dd8a,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d09c243,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -212,17 +398,29 @@ Binding(ALT+SHIFT+ARROW_DOWN,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.last,Restore Last Selection,
 		Restore last selection,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@3fe9b2ea,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.361
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@22503e0e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+C:
 Binding(CTRL+SHIFT+C,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.toggle.comment,Toggle Comment,
 		Toggle comment the selected lines,
 		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@6f08a725,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6bb0cb99,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -230,17 +428,29 @@ Binding(CTRL+SHIFT+C,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.toggle.comment,Toggle Comment,
 		Toggle Comment,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@33c8401f,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.361
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3d214c59,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for ALT+SHIFT+ARROW_RIGHT:
 Binding(ALT+SHIFT+ARROW_RIGHT,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.next,Select Next Element,
 		Expand selection to include next sibling,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@2115a716,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2406e10b,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -248,17 +458,29 @@ Binding(ALT+SHIFT+ARROW_RIGHT,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.next,Select Next Element,
 		Expand selection to include next sibling,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@796cea46,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2014-04-21 22:39:19.361
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2bdcdfc0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 01:39:12.028
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 !MESSAGE A conflict occurred for CTRL+SHIFT+\:
 Binding(CTRL+SHIFT+\,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.remove.block.comment,Remove Block Comment,
 		Remove the block comment enclosing the selection,
 		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@148ca652,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3fa0aba7,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.jdt.ui.javaEditorScope,,,system)
@@ -266,11 +488,16 @@ Binding(CTRL+SHIFT+\,
 	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.remove.block.comment,Remove Block Comment,
 		Remove Block Comment,
 		Category(org.eclipse.ui.category.edit,Edit,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.MakeHandlersGo@7391483c,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2a49bb60,
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
 
+<<<<<<< HEAD
 !ENTRY com.android.ide.eclipse.adt 4 0 2014-04-22 00:21:30.014
 !MESSAGE No command output when running: 'am start -n com.example.phms/com.example.phms.LoginActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER' on device 192.168.56.102:5555
 !STACK 0
@@ -322,11 +549,19 @@ com.android.ddmlib.ShellCommandUnresponsiveException
 !SESSION 2014-04-22 04:02:27.329 -----------------------------------------------
 eclipse.buildId=v22.3.0-887826
 java.version=1.7.0_07
+=======
+!ENTRY org.eclipse.ui 4 4 2014-04-22 02:00:27.526
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.
+!SESSION 2014-04-22 02:02:19.243 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  -product com.android.ide.eclipse.adt.package.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.resources 2 10035 2014-04-22 04:02:39.221
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 
@@ -470,11 +705,302 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 !SESSION 2014-04-22 04:09:13.573 -----------------------------------------------
 eclipse.buildId=v22.3.0-887826
 java.version=1.7.0_07
+=======
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 02:02:28.961
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for CTRL+I:
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.indent,Correct Indentation,
+		Corrects the indentation of the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@73e75a39,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.active.elements,Format Active Elements,
+		Format active elements,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@50e43884,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for CTRL+SHIFT+F:
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.format,Format,
+		Format the selected text,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@59d48fa1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+F,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.format.document,Format,
+		Format selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@57c4c58d,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_DOWN:
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.next.member,Go to Next Member,
+		Move the caret to the next member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1221c11a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.nextSibling,Next Sibling,
+		Go to Next Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4d19c0e7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_LEFT:
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@660c9b42,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_LEFT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.previous,Select Previous Element,
+		Expand selection to include previous sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2796bcfd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_UP:
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@45a53e65,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.enclosing,Select Enclosing Element,
+		Expand selection to include enclosing element,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@701e810f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for CTRL+SHIFT+P:
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.matching.bracket,Go to Matching Bracket,
+		Moves the cursor to the matching bracket,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@63a37c9b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.goto.matching.bracket,Matching Character,
+		Go to Matching Character,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6f8c3003,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for CTRL+SHIFT+/:
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.add.block.comment,Add Block Comment,
+		Enclose the selection with a block comment,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@249d738,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+/,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.add.block.comment,Add Block Comment,
+		Add Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b7bbdc0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.290
+!MESSAGE A conflict occurred for CTRL+O:
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.show.outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3dd09eb4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.quick_outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4b635b20,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.291
+!MESSAGE A conflict occurred for CTRL+SHIFT+ARROW_UP:
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.goto.previous.member,Go to Previous Member,
+		Move the caret to the previous member of the compilation unit,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@67f3b88a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+ARROW_UP,
+	ParameterizedCommand(Command(org.eclipse.wst.xml.ui.previousSibling,Previous Sibling,
+		Go to Previous Sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@444fc7e5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.291
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_DOWN:
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@31d8a157,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_DOWN,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.last,Restore Last Selection,
+		Restore last selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3b6585c5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.291
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.toggle.comment,Toggle Comment,
+		Toggle comment the selected lines,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5487052,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.toggle.comment,Toggle Comment,
+		Toggle Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6715f525,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.291
+!MESSAGE A conflict occurred for ALT+SHIFT+ARROW_RIGHT:
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@56c61a33,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(ALT+SHIFT+ARROW_RIGHT,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.structure.select.next,Select Next Element,
+		Expand selection to include next sibling,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1955b1ec,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-22 02:05:55.291
+!MESSAGE A conflict occurred for CTRL+SHIFT+\:
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.remove.block.comment,Remove Block Comment,
+		Remove the block comment enclosing the selection,
+		Category(org.eclipse.jdt.ui.category.source,Source,Java Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@67e236c6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+Binding(CTRL+SHIFT+\,
+	ParameterizedCommand(Command(org.eclipse.wst.sse.ui.remove.block.comment,Remove Block Comment,
+		Remove Block Comment,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2fdb444,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SESSION 2014-04-22 03:13:34.453 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  -product com.android.ide.eclipse.adt.package.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
 
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 03:15:33.594
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 03:43:35.298 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 03:43:45.893
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 03:47:21.191 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 03:47:30.391
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 03:51:44.202 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_02
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.resources 2 10035 2014-04-22 04:09:20.100
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
 
@@ -489,6 +1015,191 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !ENTRY org.eclipse.egit.ui 2 0 2014-04-22 04:09:58.918
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Jesus'. If this is
+=======
+!ENTRY org.eclipse.core.resources 2 10035 2014-04-22 03:51:47.036
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-04-22 03:51:52.414
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\smpham'. If this is
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-04-22 04:19:27.625 -----------------------------------------------
+eclipse.buildId=v22.3.0-887826
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-04-22 04:19:33.843
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.osgi 4 0 2014-04-22 04:19:34.081
+!MESSAGE An error occurred while automatically activating bundle org.eclipse.core.resources (85).
+!STACK 0
+org.osgi.framework.BundleException: Exception in org.eclipse.core.resources.ResourcesPlugin.start() of bundle org.eclipse.core.resources.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+Caused by: org.eclipse.core.internal.dtree.ObjectNotFoundException: Tree element '/PHMS/bin/resources.ap_' not found.
+	at org.eclipse.core.internal.dtree.AbstractDataTree.handleNotFound(AbstractDataTree.java:257)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.getData(DeltaDataTree.java:585)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:50)
+	at org.eclipse.core.internal.dtree.NoDataDeltaNode.asBackwardDelta(NoDataDeltaNode.java:59)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:47)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:47)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.asBackwardDelta(DeltaDataTree.java:88)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:816)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:815)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:792)
+	at org.eclipse.core.internal.watson.ElementTree.immutable(ElementTree.java:518)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:710)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1528)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2502)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2251)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:439)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+Root exception:
+org.eclipse.core.internal.dtree.ObjectNotFoundException: Tree element '/PHMS/bin/resources.ap_' not found.
+	at org.eclipse.core.internal.dtree.AbstractDataTree.handleNotFound(AbstractDataTree.java:257)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.getData(DeltaDataTree.java:585)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:50)
+	at org.eclipse.core.internal.dtree.NoDataDeltaNode.asBackwardDelta(NoDataDeltaNode.java:59)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:47)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:47)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.asBackwardDelta(DeltaDataTree.java:88)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:816)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:815)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:792)
+	at org.eclipse.core.internal.watson.ElementTree.immutable(ElementTree.java:518)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:710)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1528)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2502)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2251)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:439)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+
+!ENTRY org.eclipse.osgi 4 0 2014-04-22 04:19:34.273
+!MESSAGE Application error
+!STACK 1
+java.lang.NoClassDefFoundError: org/eclipse/core/resources/IContainer
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+Caused by: org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.core.resources (85).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 14 more
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.core.resources.ResourcesPlugin.start() of bundle org.eclipse.core.resources.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 23 more
+Caused by: org.eclipse.core.internal.dtree.ObjectNotFoundException: Tree element '/PHMS/bin/resources.ap_' not found.
+	at org.eclipse.core.internal.dtree.AbstractDataTree.handleNotFound(AbstractDataTree.java:257)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.getData(DeltaDataTree.java:585)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:50)
+	at org.eclipse.core.internal.dtree.NoDataDeltaNode.asBackwardDelta(NoDataDeltaNode.java:59)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:47)
+	at org.eclipse.core.internal.dtree.DataDeltaNode.asBackwardDelta(DataDeltaNode.java:47)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.asBackwardDelta(DeltaDataTree.java:88)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:816)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:815)
+	at org.eclipse.core.internal.dtree.DeltaDataTree.reroot(DeltaDataTree.java:792)
+	at org.eclipse.core.internal.watson.ElementTree.immutable(ElementTree.java:518)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:710)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1528)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2502)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2251)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:439)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more

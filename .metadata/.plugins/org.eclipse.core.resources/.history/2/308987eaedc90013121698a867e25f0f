@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.phms"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SEND_SMS">
+    </uses-permission>
+    
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.phms.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.phms.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.example.phms.RecoverActivity"
+            android:label="@string/title_activity_recover" >
+        </activity>
+        <activity
+            android:name="com.example.phms.MainMenuActivity"
+            android:label="@string/title_activity_main_menu" >
+        </activity>
+        <activity
+            android:name="com.example.phms.DietActivity"
+            android:label="@string/title_activity_diet" >
+        </activity>
+        <activity
+            android:name="com.example.phms.MedicationActivity"
+            android:label="@string/title_activity_medication" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AddMedicationActivity"
+            android:label="@string/title_activity_add_medication" >
+        </activity>
+        <activity
+            android:name="com.example.phms.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name="com.example.phms.ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
+        <activity
+            android:name="com.example.phms.FoodEditorActivity"
+            android:label="@string/title_activity_food_editor" >
+        </activity>
+        <activity
+            android:name="com.example.phms.ExerciseEditorActivity"
+            android:label="@string/title_activity_exercise_editor" >
+        </activity>
+        <activity
+            android:name="com.example.phms.VitalSignsActivity"
+            android:label="@string/title_activity_vital_signs" >
+        </activity>
+        <activity
+            android:name="com.example.phms.TestActivity"
+            android:label="@string/title_activity_test" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AddAlertActivity"
+            android:label="@string/title_activity_add_alert" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AlarmReceiverActivity"
+            android:label="@string/title_activity_alarm_receiver" >
+        </activity>
+        <activity
+            android:name="com.example.phms.AlertActivity"
+            android:label="@string/title_activity_alert" >
+        </activity>
+        <activity
+            android:name="com.example.phms.CommunicationsActivity"
+            android:label="@string/title_activity_communications" >
+        </activity>
+        <activity
+            android:name="com.example.phms.RepeatingAlarmActivity"
+            android:label="@string/title_activity_repeating_alarm" >
+        </activity>
+        <activity
+            android:name="com.example.phms.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.phms.EditAccountActivity"
+            android:label="@string/title_activity_edit_account" >
+        </activity>
+    </application>
+
+</manifest>

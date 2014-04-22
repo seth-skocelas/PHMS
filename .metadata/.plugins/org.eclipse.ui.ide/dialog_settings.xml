@@ -3,12 +3,28 @@
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+<<<<<<< HEAD
 	</section>
 	<section name="CleanDialogSettings">
 		<item value="500" key="DIALOG_WIDTH"/>
 		<item value="113" key="DIALOG_Y_ORIGIN"/>
 		<item value="377" key="DIALOG_HEIGHT"/>
 		<item value="433" key="DIALOG_X_ORIGIN"/>
+=======
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\smpham\Documents\GitHub\PHMS\PHMS"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="208" key="DIALOG_Y_ORIGIN"/>
+		<item value="377" key="DIALOG_HEIGHT"/>
+		<item value="337" key="DIALOG_X_ORIGIN"/>
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 		<item value="false" key="TOGGLE_SELECTED"/>
 	</section>
 </section>

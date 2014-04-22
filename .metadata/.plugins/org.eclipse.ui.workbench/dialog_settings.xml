@@ -12,6 +12,7 @@
 		<list key="textEntries">
 		</list>
 	</section>
+<<<<<<< HEAD
 	<section name="ShowViewDialog">
 		<item value="311" key="DIALOG_WIDTH"/>
 		<item value="com.android.ide.eclipse.ddms.views.FileExplorerView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
@@ -23,6 +24,8 @@
 			<item value="com.android.ide.eclipse.ddms.views.category"/>
 		</list>
 	</section>
+=======
+>>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
 	<section name="ImportExportAction">
 		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
