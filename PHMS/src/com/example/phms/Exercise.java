@@ -2,10 +2,11 @@ package com.example.phms;
 public class Exercise 
 {
 	private String name;
-	private int caloriesBurned;
-	private int timeStamp;
+	private String caloriesBurned;
+	private String timeStamp;
 	//constructor
-	public Exercise(String _name, int _caloriesBurned, int _timeStamp)
+	public Exercise(){}
+	public Exercise(String _name, String _caloriesBurned, String _timeStamp)
 	{
 		this.name = _name;
 		this.caloriesBurned = _caloriesBurned;
@@ -17,11 +18,11 @@ public class Exercise
 		return this.name;
 	}
 
-	public int getCaloriesBurned()
+	public String getCaloriesBurned()
 	{
 		return caloriesBurned;
 	}
-	public int getTimeStamp()
+	public String getTimeStamp()
 	{
 		return this.timeStamp;
 	}
@@ -31,11 +32,11 @@ public class Exercise
 		this.name = _name;
 	}
 
-	public void setCaloriesBurned(int _caloriesBurned)
+	public void setCaloriesBurned(String _caloriesBurned)
 	{
 		this.caloriesBurned = _caloriesBurned;
 	}
-	public void setTimeStamp(int _timeStamp)
+	public void setTimeStamp(String _timeStamp)
 	{
 		this.timeStamp = _timeStamp;
 	}
