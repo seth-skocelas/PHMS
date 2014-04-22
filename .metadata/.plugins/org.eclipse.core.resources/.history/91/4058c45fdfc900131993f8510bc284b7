@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="match_parent"
+        android:layout_height="151dp"
+        android:padding="20dp" />
+
+    <CheckBox
+        android:id="@+id/Sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunday" />
+
+    <CheckBox
+        android:id="@+id/Monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday" />
+
+    <CheckBox
+        android:id="@+id/Tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuesday" />
+
+    <CheckBox
+        android:id="@+id/Wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wednesday" />
+
+    <CheckBox
+        android:id="@+id/Thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thursday" />
+
+    <CheckBox
+        android:id="@+id/Friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friday" />
+
+    <CheckBox
+        android:id="@+id/Saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saturday" />
+
+    <Button
+        android:id="@+id/btncancel2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:padding="20dp"
+        android:text="Cancel" />
+
+    <Button
+        android:id="@+id/btnset1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Set" />
+
+</LinearLayout>
