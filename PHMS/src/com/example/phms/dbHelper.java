@@ -44,8 +44,8 @@ Class variables
 	
 	private static final String TABLE_EXERCISE = "EXERCISE";
 	//static final String KEY_USER = "user_name";
-	static final String KEY_EX_NAME = "food_name";
-	static final String KEY_CALORIES_BURNED = "calories_per";
+	static final String KEY_EX_NAME = "ex_name";
+	static final String KEY_CALORIES_BURNED = "calories_burned";
 	
 	private static final String TABLE_MEDICINE = "MEDICINE";
 	static final String KEY_MUSER = "user_name";
@@ -69,7 +69,7 @@ Class variables
 	
 	private static final String SQL_CREATE_EX_TABLE = 
 			"CREATE TABLE " + TABLE_EXERCISE + " ("
-					+ KEY_USER + " TEXT," + KEY_EX_NAME + " TEXT," + KEY_CALORIES_BURNED + " INT," 
+					+ KEY_USER + " TEXT," + KEY_EX_NAME + " TEXT," + KEY_CALORIES_BURNED + " TEXT," 
 					+ KEY_TIME + " TEXT" + " )";
 	
 	private static final String SQL_CREATE_MEDICINE_TABLE = 
@@ -127,6 +127,38 @@ Class variables
     				map.put("quan", f.getQuantity());
     				map.put("cal", f.getCaloriesPer());
     				map.put("id", f.getTimeStamp());
+    				mylistData.add(map);
+                } while (cursor.moveToNext());
+            }
+         
+            // return contact list
+            return mylistData;
+        }
+        
+        public  ArrayList<HashMap<String, Object>> getAllEx() {
+        	
+
+    		ArrayList<HashMap<String, Object>> mylistData = new ArrayList<HashMap<String, Object>>();
+    		//HashMap<String,Object> map = new HashMap<String, Object>();
+            // Select All Query
+            String selectQuery = "SELECT  * FROM " + TABLE_EXERCISE;
+         
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+         
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                	HashMap<String,Object> map = new HashMap<String, Object>();
+                    Exercise ex = new Exercise();
+                    //f.setID(Integer.parseInt(cursor.getString(0)));
+                    ex.setName(cursor.getString(1));
+                    ex.setCaloriesBurned(cursor.getString(2));
+                    ex.setTimeStamp(cursor.getString(3));
+                    // Adding contact to list
+                    map.put("exercise", ex.getName());
+    				map.put("burned", ex.getCaloriesBurned());
+    				map.put("id", ex.getTimeStamp());
     				mylistData.add(map);
                 } while (cursor.moveToNext());
             }
@@ -193,7 +225,6 @@ Class variables
 		// Inserting Row
         db.insert(TABLE_FOOD, null, cv);
         db.close(); // Closing database connection
-    	//return this.mDb.insert(TABLE_FOOD, null, cv);
     }
     
     public void addMedicine (Medicine medicine) {
@@ -212,35 +243,72 @@ Class variables
     	
     }
     
-    /*
-    public long addExercise(Exercise ex)
+
+    public void addExercise(Exercise ex)
     {
+    	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
     	
-    	cv.put(KEY_NAME, ex.getName());
-		cv.put(KEY_NAME, ex.getCaloriesBurned());
+    	cv.put(KEY_EX_NAME, ex.getName());
+		cv.put(KEY_CALORIES_BURNED, ex.getCaloriesBurned());
+		cv.put(KEY_TIME, ex.getTimeStamp());
+		
+		// Inserting Row
+        db.insert(TABLE_EXERCISE, null, cv);
+        db.close(); // Closing database connection
     	
-    	return this.mDb.insert(TABLE_EXERCISE, null, cv);
-    }*/
+    }
 /*******Methods for FOOD*******************/
 		// Delete a row from the database, by rowId (primary key)
     
     public void deleteFood(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_FOOD, KEY_TIME + " = ?",
-                new String[] { String.valueOf(timeStamp) });
+        db.delete(TABLE_FOOD, KEY_TIME + " = ?", new String[] { String.valueOf(timeStamp) });
         db.close();
     }
-    public int updateContact(int time) {
+    public int updateFood(Food food) {
         SQLiteDatabase db = this.getWritableDatabase();
      
         ContentValues values = new ContentValues();
-        //values.put(KEY_NAME, contact.getName());
-        //values.put(KEY_PH_NO, contact.getPhoneNumber());
+        values.put(KEY_NAME, food.getName());
+        values.put(KEY_QUANTITY, food.getQuantity());
+        values.put(KEY_CALORIES_PER, food.getCaloriesPer());
+        values.put(KEY_TIME, food.getTimeStamp());
      
         // updating row
         return db.update(TABLE_FOOD, values, KEY_TIME + " = ?",
-                new String[] { String.valueOf(time) });
+                new String[] { String.valueOf(food.getTimeStamp()) });
+    }
+    
+    public int getCount(String value) {
+        String countQuery = "SELECT  * FROM " + value;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        //cursor.close();
+ 
+        // return count
+        //if (cursor.getCount()==null)
+        return cursor.getCount();
     }
 
+
+
+    public void deleteEx(int timeStamp) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    db.delete(TABLE_EXERCISE, KEY_TIME + " = ?", new String[] { String.valueOf(timeStamp) });
+    db.close();
+    }
+    
+    public int updateEx(Exercise ex) {
+        SQLiteDatabase db = this.getWritableDatabase();
+     
+        ContentValues values = new ContentValues();
+        values.put(KEY_EX_NAME, ex.getName());
+        values.put(KEY_CALORIES_BURNED, ex.getCaloriesBurned());
+        values.put(KEY_TIME, ex.getTimeStamp());
+     
+        // updating row
+        return db.update(TABLE_EXERCISE, values, KEY_TIME + " = ?",
+                new String[] { String.valueOf(ex.getTimeStamp()) });
+    }
 }
