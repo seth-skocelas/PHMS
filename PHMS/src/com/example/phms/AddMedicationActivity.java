@@ -2,6 +2,8 @@ package com.example.phms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,8 +36,9 @@ public class AddMedicationActivity extends Activity {
 	public EditText conflictions;
 	final Context context = this;
 	private static int count=0;
+	private int conCount = 0;
 	dbHelper mDbHelper;
-	String [] currentConflictions = new String[10];
+	String [] currentConflictions = {" "," "," "," "," "," "," "," "," "," "};
 	public static String strSeparator = "__,__";
 	int numC = 0;
 	String conflictionList;
@@ -56,7 +60,6 @@ public class AddMedicationActivity extends Activity {
 		mDbHelper = new dbHelper(getBaseContext());
 		viewConButton = (Button) findViewById(R.id.view_con_button);
 		
-		
 		viewConButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
@@ -67,7 +70,17 @@ public class AddMedicationActivity extends Activity {
 				setCon();
 				
 				
-				
+				cList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			        @Override
+			        public boolean onItemLongClick(AdapterView<?> arg0, View v, int index, long arg3) {
+			        	//Log.d("in onLongClick");
+		                String str=cList.getItemAtPosition(index).toString();
+		                removeItemFromList(index);
+		                //Toast.makeText(getApplicationContext(),str , Toast.LENGTH_LONG).show();
+		                //Log.d("long click : " +str);
+		               return true;
+			        		}
+					});
 				
 				
 
@@ -80,9 +93,6 @@ public class AddMedicationActivity extends Activity {
 				
 				
  
-				 
-				// set dialog message
-				
 				
 				alert.setOnShowListener(new DialogInterface.OnShowListener() {
 
@@ -106,9 +116,17 @@ public class AddMedicationActivity extends Activity {
 				
 			alert.show();	
 			}
+			
+			
+			
 		});
 		
 	}
+		
+		
+	
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -175,10 +193,10 @@ public class AddMedicationActivity extends Activity {
 		    	  String d = unit.getText().toString();
 		    	  conflictionList = convertArrayToString(currentConflictions);
 		    	  
-		    	  Medicine currentMedicine = new Medicine(a,a,b,c,d,conflictionList,(count++ + ""));
+		    	  Medicine currentMedicine = new Medicine(a,a,b,c,d,conflictionList,(count++ + ""),conCount);
 		  		  mDbHelper.addMedicine(currentMedicine);
 		  		  mDbHelper.close();
-		  		  
+		  		  conCount = 0;
 		    	  endActivity();
 		 
 		    } });
@@ -193,6 +211,14 @@ public class AddMedicationActivity extends Activity {
 		
 	}
 	
+	public void viewConflictions (View view) {
+		Bundle b=new Bundle();
+		b.putStringArray("key", currentConflictions);
+		Intent intent = new Intent(this, ConflictionActivity.class);
+		intent.putExtras(b);
+	    startActivity(intent);
+	}
+	
 	public void addConfliction(View view) {
 		
 
@@ -203,8 +229,8 @@ public class AddMedicationActivity extends Activity {
 		      public void onClick(DialogInterface dialog, int which) {
 		    	  
 		    	  String e = conflictions.getText().toString();
-		    	  currentConflictions[numC] = e;
-		    	  numC++;
+		    	  currentConflictions[conCount] = e;
+		    	  conCount++;
 		 
 
 		 
@@ -236,13 +262,7 @@ public class AddMedicationActivity extends Activity {
 	    return arr;
 	}
 	
-	private void populateListViewFromDB(String[] myListData) {
-		
-		ArrayAdapter<String> itemsAdapter = 
-			    new ArrayAdapter<String>(this, R.layout.display_conflictions, myListData);
-		cList.setAdapter(itemsAdapter);
-
-	}
+	
 	
 	
 	public void endActivity() {
@@ -264,5 +284,51 @@ public class AddMedicationActivity extends Activity {
 		endActivity();
 	    
 	}
+	
+    private void removeItemFromList(int position) {
+        //final int deletePosition = position;
+        final int index = position;
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                AddMedicationActivity.this);
+    
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete this item?");
+        alert.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TOD O Auto-generated method stub
+                    
+                    // main code on after clicking yes
+                    //list.remove(deletePosition);
+                    //adapter.notifyDataSetChanged();
+                    //adapter.notifyDataSetInvalidated();
+        		if (index == 9) 
+        			currentConflictions[9] = " ";
+        		else {
+        			for (int a = index + 1; a <= 9; a++)
+                    {
+        				currentConflictions[a-1] = currentConflictions[a];
+                    }
+        			currentConflictions[9] = " ";
+        		}
+                
+                   
+                conCount--;
+                setCon();
+                
+      
+            }
+        });
+        alert.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+      
+        alert.show();
+      
+    }
 
 }

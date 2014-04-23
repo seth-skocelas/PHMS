@@ -55,6 +55,7 @@ Class variables
 	static final String KEY_UNIT = "unit";
 	static final String KEY_CONFLICTIONS = "conflictions";
 	static final String KEY_ID = "id";
+	static final String KEY_CON = "con_count";
 	
 	
 	private static final String SQL_CREATE_USER_TABLE =
@@ -77,7 +78,7 @@ Class variables
 	private static final String SQL_CREATE_MEDICINE_TABLE = 
 			"CREATE TABLE " + TABLE_MEDICINE + " ("
 					+ KEY_MUSER + " TEXT," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
-					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT" + " )";
+					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT," + KEY_CON + " INT" + " )";
 	
 
 //constructor
@@ -241,12 +242,13 @@ Class variables
     	cv.put(KEY_UNIT, medicine.getUnit());
     	cv.put(KEY_CONFLICTIONS, medicine.getConflictions());
     	cv.put(KEY_ID, medicine.getID());
+    	cv.put(KEY_CON, medicine.getCount());
     	
     	db.insert(TABLE_MEDICINE, null, cv);
     	
     }
     
-<<<<<<< HEAD
+
     public void deleteMedicine(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
@@ -279,6 +281,7 @@ Class variables
                 m.setUnit(cursor.getString(4));
                 m.setConflictions(cursor.getString(5));
                 m.setID(cursor.getString(6));
+                m.setCount(Integer.parseInt(cursor.getString(7)));
                 // Adding contact to list
                 map.put("user", m.getUserName());
 				map.put("name", m.getName());
@@ -287,6 +290,7 @@ Class variables
 				map.put("unit", m.getUnit());
 				map.put("con", m.getConflictions());
 				map.put("id", m.getID());
+				map.put("count", m.getCount());
 				
 				mylistData.add(map);
             } while (cursor.moveToNext());
@@ -296,12 +300,10 @@ Class variables
         return mylistData;
     }
     
-    /*
-    public long addExercise(Exercise ex)
-=======
+
 
     public void addExercise(Exercise ex)
->>>>>>> 2c97de196dff77d17ab4cf213b61a9a2596ddaca
+
     {
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
