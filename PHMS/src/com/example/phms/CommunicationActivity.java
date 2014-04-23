@@ -18,7 +18,8 @@ import android.widget.Toast;
 
 public class CommunicationActivity extends Activity {
 	
-	private Button btn;
+	private Button smsbtn,emailbtn;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,8 @@ public class CommunicationActivity extends Activity {
 		setContentView(R.layout.activity_communication);
 		
 		
-		btn = (Button)findViewById(R.id.sms);
-		btn.setOnClickListener(new OnClickListener() {
+		smsbtn = (Button)findViewById(R.id.sms);
+		smsbtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
@@ -39,10 +40,21 @@ public class CommunicationActivity extends Activity {
 			}
 		});
 		
+		emailbtn = (Button)findViewById(R.id.emailbutton1);
+		emailbtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendEmail();
+				Toast.makeText(CommunicationActivity.this, "E-mail has successfuly sent", Toast.LENGTH_LONG).show();
+			}
+		});
+		
 	}
 	
 	public void sendSms(){
-		
+		//working sms method
 		  PendingIntent pi = PendingIntent.getActivity(this, 0,
 		            new Intent(this, CommunicationActivity.class), 0);                
 		        SmsManager sms = SmsManager.getDefault();
@@ -62,6 +74,22 @@ public class CommunicationActivity extends Activity {
 					Toast.LENGTH_LONG).show();
 		}
 		*/
+	}
+	
+	public void sendEmail()
+	{
+		String to = "lammypham@gmail.com";
+		String subject = "PHMS";
+		String msg = "hello";
+		
+		Intent email = new Intent(Intent.ACTION_SEND);
+		email.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
+		email.putExtra(Intent.EXTRA_SUBJECT, subject);
+		email.putExtra(Intent.EXTRA_TEXT, msg);
+		
+		//prompts email client
+		email.setType("message/rfc822");
+		startActivity(Intent.createChooser(email, "Choose an Email client :"));
 	}
 
 

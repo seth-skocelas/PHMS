@@ -111,5 +111,7 @@
     <string name="title_activity_repeating_alarm">RepeatingAlarmActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_edit_account">EditAccountActivity</string>
+    <string name="title_activity_confliction">ConflictionActivity</string>
+    <string name="title_activity_edit_medication">EditMedicationActivity</string>
 
 </resources>

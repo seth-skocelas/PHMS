@@ -55,6 +55,7 @@ Class variables
 	static final String KEY_UNIT = "unit";
 	static final String KEY_CONFLICTIONS = "conflictions";
 	static final String KEY_ID = "id";
+	static final String KEY_CON = "con_count";
 	
 	
 	private static final String TABLE_FOOD_CONSTANTS = "FOOD_CONSTANTS";
@@ -83,7 +84,7 @@ Class variables
 	private static final String SQL_CREATE_MEDICINE_TABLE = 
 			"CREATE TABLE " + TABLE_MEDICINE + " ("
 					+ KEY_MUSER + " TEXT," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
-					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT" + " )";
+					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT," + KEY_CON + " INT" + " )";
 	
 	private static final String SQL_CREATE_FOOD_CONSTANTS_TABLE = 
 			"CREATE TABLE " + TABLE_FOOD_CONSTANTS + " ("
@@ -282,11 +283,16 @@ Class variables
     	cv.put(KEY_UNIT, medicine.getUnit());
     	cv.put(KEY_CONFLICTIONS, medicine.getConflictions());
     	cv.put(KEY_ID, medicine.getID());
+    	cv.put(KEY_CON, medicine.getCount());
     	
     	db.insert(TABLE_MEDICINE, null, cv);
     	
     }
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
     public void deleteMedicine(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
@@ -319,6 +325,7 @@ Class variables
                 m.setUnit(cursor.getString(4));
                 m.setConflictions(cursor.getString(5));
                 m.setID(cursor.getString(6));
+                m.setCount(Integer.parseInt(cursor.getString(7)));
                 // Adding contact to list
                 map.put("user", m.getUserName());
 				map.put("name", m.getName());
@@ -327,6 +334,7 @@ Class variables
 				map.put("unit", m.getUnit());
 				map.put("con", m.getConflictions());
 				map.put("id", m.getID());
+				map.put("count", m.getCount());
 				
 				mylistData.add(map);
             } while (cursor.moveToNext());
@@ -336,8 +344,15 @@ Class variables
         return mylistData;
     }
     
+<<<<<<< HEAD
 public void addExercise(Exercise ex)
 
+=======
+
+
+    public void addExercise(Exercise ex)
+
+>>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
     {
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
