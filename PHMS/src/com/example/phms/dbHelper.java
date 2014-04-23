@@ -57,6 +57,12 @@ Class variables
 	static final String KEY_ID = "id";
 	
 	
+	private static final String TABLE_FOOD_CONSTANTS = "FOOD_CONSTANTS";
+	static final String KEY_SUGGESTED = "suggested";
+	static final String KEY_TODAY = "today";
+
+	
+	
 	private static final String SQL_CREATE_USER_TABLE =
 		    "CREATE TABLE " + TABLE_USER + " (" 
 		    		+ KEY_FNAME + " TEXT NOT NULL," + KEY_LNAME + " TEXT NOT NULL," + KEY_USERNAME + " TEXT PRIMARY KEY," 
@@ -79,6 +85,10 @@ Class variables
 					+ KEY_MUSER + " TEXT," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
 					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT" + " )";
 	
+	private static final String SQL_CREATE_FOOD_CONSTANTS_TABLE = 
+			"CREATE TABLE " + TABLE_FOOD_CONSTANTS + " ("
+					+ KEY_USER + " TEXT," + KEY_SUGGESTED + " TEXT," + KEY_TODAY + " TEXT," + " )";
+	
 
 //constructor
 	public dbHelper(Context context)
@@ -92,6 +102,7 @@ Class variables
     		db.execSQL(SQL_CREATE_FOOD_TABLE);
     		db.execSQL(SQL_CREATE_EX_TABLE);
     		db.execSQL(SQL_CREATE_MEDICINE_TABLE);
+    		db.execSQL(SQL_CREATE_FOOD_CONSTANTS_TABLE);
     	}
     	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     	{
@@ -99,6 +110,7 @@ Class variables
     		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD);
     		db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCISE);
     		db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEDICINE);
+    		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD_CONSTANTS);
     		onCreate(db);
     	}
     	
@@ -167,6 +179,35 @@ Class variables
          
             // return contact list
             return mylistData;
+        }
+        
+        //getting elements from the user for the diet activity
+        public  Users getUserFoodDetails() {
+        	
+
+    		Users user = new Users("Jesus");
+            String selectQuery = "SELECT  * FROM " + TABLE_USER;
+         
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+         
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                	if (cursor.getString(0).equals("Jesus"))
+                	{
+                		user.setAge(Integer.parseInt(cursor.getString(6)));
+                		user.setGender(cursor.getString(7));
+                		user.setHeightFeet(Integer.parseInt(cursor.getString(8)));
+                		user.setHeightInches(Integer.parseInt(cursor.getString(9)));
+                		user.setWeight(Integer.parseInt(cursor.getString(10)));
+                		
+                	}
+                } while (cursor.moveToNext());
+            }
+         
+            // return contact list
+            return user;
         }
     
         
@@ -246,14 +287,13 @@ Class variables
     	
     }
     
-<<<<<<< HEAD
     public void deleteMedicine(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
                 new String[] { String.valueOf(timeStamp) });
         db.close();
     }
-    
+
     
     public  ArrayList<HashMap<String, Object>> getAllMedicine() {
     	
@@ -296,12 +336,8 @@ Class variables
         return mylistData;
     }
     
-    /*
-    public long addExercise(Exercise ex)
-=======
+public void addExercise(Exercise ex)
 
-    public void addExercise(Exercise ex)
->>>>>>> 2c97de196dff77d17ab4cf213b61a9a2596ddaca
     {
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();

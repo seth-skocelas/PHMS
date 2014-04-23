@@ -73,6 +73,10 @@ public class Time implements Time_Constants
 		return true;
 	}
 	
+	public int getSecond(){
+		return this.sec;
+	}
+	
 	// comparison function between two times
 	/**
 	 * compares two Time objects

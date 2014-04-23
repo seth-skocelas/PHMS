@@ -181,7 +181,7 @@ public class ExerciseEditorActivity extends Activity {
 				 ex_reading.setText(new StringBuilder(tokens[5]));
 				 //quantity_reading.setText(new StringBuilder(tokens[3]));
 				 calorie_reading.setText(new StringBuilder(tokens[3]));
-				 Toast.makeText(getApplicationContext(), str , Toast.LENGTH_LONG).show();
+				 //Toast.makeText(getApplicationContext(), str , Toast.LENGTH_LONG).show();
 				//Toast.makeText(getApplicationContext(), str1 , Toast.LENGTH_LONG).show();
 				 //Double readValue=0.0;
 				 

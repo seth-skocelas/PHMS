@@ -47,13 +47,15 @@
     <string name="moderate_exercise">Moderate exercise (3&#8211;5 days per week)</string>
     <string name="heavy_exercise">Heavy Exercise (6&#8211;7 days per week)</string>
     <string name="very_heavy_exercise">Very heavy exercise (twice per day, extra heavy workouts)</string>
-    <string name="suggestedCalorie_test">Suggested Calorie Intake %d</string>
+    <string name="suggestedCalorie_test">Suggested Calorie Intake %.2f</string>
     <string name="today_calories">Today\'s Calories %d</string>
     <string name="calorie_today">Calorie Intake Today: %d</string>
     <string name="calorie_burned_today">Calorie Burned Today: %d</string>
     <string name="display_food">Food: %s</string>
     <string name="display_quantity">Quantity: %s</string>
     <string name="display_calories">Calories: %s</string>
+    <string name="display_exercise">Exercise:        %s</string>
+    <string name="display_burned">  Calories Burned: %s</string>
     <string name="title_activity_food_editor_display">FoodEditor</string>
     <string name="medInstructions">Select a medication to edit:</string>
     <string name="add_food">Add</string>
@@ -84,7 +86,10 @@
     <string name="edit">Edit</string>
     <string name="action_search">Search</string>
     <string name="action_logout">Logout</string>
+    <string name="action_foodEditorActivity">Edit Food</string>
+    <string name="action_exerciseEditorActivity">Edit Exercise</string>
     <string name="settings">Settings</string>
+    
 
     <string-array name="searchchoices">
         <item>Ad-Hoc</item>

@@ -1,25 +1,26 @@
 package com.example.phms;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.widget.Toast;
 
 //import DialogInterface.OnClickListener;
@@ -40,6 +41,7 @@ public class DietActivity extends Activity {
 	private String text;
 	private int resultClicked;
 	private View promptsView;
+	//private TextView suggestedCalorieDisplay;
 	protected dbHelper db;
 	//private TextView emptyview;
 	//private ListView foodList;
@@ -52,7 +54,7 @@ public class DietActivity extends Activity {
 		setContentView(R.layout.activity_diet);
 		db = new dbHelper(this);
 		button = (Button) findViewById(R.id.edit_diet);
-		//selectionList = (RadioGroup) findViewById(R.id.radioGroup1);
+		
 		displayingCalories = (TextView) findViewById(R.id.suggestedCalorie);
 
 		foodListDisplay = (ListView) findViewById(R.id.food_list_diet);
@@ -92,16 +94,9 @@ public class DietActivity extends Activity {
 				    	RadioButton radioSelectionButton = (RadioButton)promptsView.findViewById(selectedId);
 				    	//code where the if statements and formulas go
 				    	text = radioSelectionButton.getText().toString();
-				    	
-				    	//resultClicked = radioSelectionButton.getId();
-				    	check(text);
-				    	//Toast.makeText(DietActivity.this, resultClicked.toString(), Toast.LENGTH_SHORT).show();
-				    	//String test = getString(R.string.little_to_noExcersice);
-				    	//Toast.makeText(DietActivity.this, light.getText().toString(), Toast.LENGTH_SHORT).show();
-				    	//.if (text.equals(test))
-				    		//Toast.makeText(DietActivity.this, "this works", Toast.LENGTH_SHORT).show();
-				    	//code for radiobutton
 				    	onResume();
+				    	check(text);
+				    	//onResume();
 				    	dialog.cancel();
 				    	
 				    }
@@ -121,19 +116,59 @@ public class DietActivity extends Activity {
 			alertDialog.show();
 					}
 			});
-		//list listener
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.display_items, FoodEditorActivity.foodBucket);
-		
-		//ListView list = (ListView) findViewById(R.id.food_list_diet);
-		//LayoutInflater li = LayoutInflater.from(context);
-		//View empty = li.inflate(R.layout.empty, null);
+
 		foodListDisplay.setEmptyView(findViewById(R.id.empty));
 		exerciseListDisplay.setEmptyView(findViewById(R.id.empty2));
-		//list.setEmptyView(empty);
-		//list.setAdapter(adapter);
-		//populate
+
 		populateFood();
-		//populateListView(exerciseListDisplay);
+		populateExercise();
+		
+		
+		//adding code for when you click an element of the food list
+		foodListDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
+
+				 String str = parent.getItemAtPosition(position).toString();
+				 String delims = "[,=}]";
+				 String[] tokens = str.split(delims);
+				 String settingFood = getString(R.string.display_food);
+				 String settingQuan = getString(R.string.display_quantity);
+				 String settingCal = getString(R.string.display_calories);
+				 settingQuan = String.format(settingQuan, tokens[3]);
+				 settingFood = String.format(settingFood, tokens[5]);
+				 settingCal = String.format(settingCal, tokens[7]);
+
+                 Toast toast=Toast.makeText(getApplicationContext(), 
+                		 settingFood + "\n" 
+ 						+ settingQuan + "\n"
+ 						+ settingCal,Toast.LENGTH_LONG );
+                 toast.setGravity(Gravity.CENTER, 0, 0);
+                 toast.show();
+			}
+
+		});
+		
+		exerciseListDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
+
+				 String str = parent.getItemAtPosition(position).toString();
+				 String delims = "[,=}]";
+				 String[] tokens = str.split(delims);
+				 String settingEx = getString(R.string.display_exercise);
+				 String settingBurn = getString(R.string.display_burned);
+				 settingEx = String.format(settingEx, tokens[5]);
+				 settingBurn = String.format(settingBurn, tokens[3]);
+				 //Toast.makeText(DietActivity.this, str, Toast.LENGTH_SHORT).show();
+                 Toast toast=Toast.makeText(getApplicationContext(), 
+                		 settingEx + "\n" 
+ 						+ settingBurn,Toast.LENGTH_LONG );
+                 toast.setGravity(Gravity.CENTER, 0, 0);
+                 toast.show();
+			}
+
+		});
 		
 		
 	}
@@ -147,6 +182,14 @@ public class DietActivity extends Activity {
     		Intent intent = new Intent(this, SettingsActivity.class);
     	    startActivity(intent);
     		break;
+    	case R.id.action_exerciseEditorActivity:
+    		Intent intent3 = new Intent(this, ExerciseEditorActivity.class);
+    	    startActivity(intent3);
+    	    break;
+    	case R.id.action_foodEditorActivity:
+    		Intent intent4 = new Intent(this, FoodEditorActivity.class);
+    	    startActivity(intent4);
+    	    break;
     	case R.id.action_search:
     		Intent intent2 = new Intent(this, SearchActivity.class);
     	    startActivity(intent2);
@@ -201,35 +244,66 @@ public class DietActivity extends Activity {
 		// TODO Auto-generated method stub
 		//String newCalorieIntake =getString(R.string.suggestedCalorie_test);
 		if (checkedId.equals(little.getText().toString())){
-			//newCalorieIntake = String.format(newCalorieIntake,  0);
+			settingSuggestedCalorie(1.2);
 			Toast.makeText(DietActivity.this, little.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(light.getText().toString())){
-			//newCalorieIntake = String.format(newCalorieIntake,1);
+			settingSuggestedCalorie(1.375);
 			Toast.makeText(DietActivity.this, light.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(moderate.getText().toString())){
-			//newCalorieIntake = String.format(newCalorieIntake,2);
+			settingSuggestedCalorie(1.55);
 			Toast.makeText(DietActivity.this, moderate.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(heavy.getText().toString())){
-			//newCalorieIntake = String.format(newCalorieIntake,3);
+			settingSuggestedCalorie(1.725);
 			Toast.makeText(DietActivity.this, heavy.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(veryHeavy.getText().toString())){
-			//newCalorieIntake = String.format(newCalorieIntake,4);
+			settingSuggestedCalorie(1.9);
 			Toast.makeText(DietActivity.this, veryHeavy.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		//displayingCalories.setText(newCalorieIntake);
 	}
 	
+	private void settingSuggestedCalorie(double constant){
+		double BMR=0;
+		double tIntake =0;
+		Users user = db.getUserFoodDetails();
+		if ("M".equals(user.getGender()))
+		{
+			BMR = 88.362
+				   + (13.397 * (user.getWeight()*0.453592))
+				   + (4.799 * (user.getHeightFeet()*12+user.getHeightInches())*2.54)
+				   + (5.677 * user.getAge());
+		tIntake = BMR * constant;
+		} 
+		//Toast.makeText(DietActivity.this, tIntake+"", Toast.LENGTH_SHORT).show();
+		//displayingCalories
+		String display = getString(R.string.suggestedCalorie_test);
+		display = String.format(display, tIntake);
+		displayingCalories.setText(display);
+		
+	}
+	
 	private void populateFood() {
 		
 		String[] columnTags = new String[] {"food", "cal"};
-		int[] columnIds = new int[] {R.id.vitalTV, R.id.valueTV};
+		int[] columnIds = new int[] {R.id.name_viewTV, R.id.cal_viewTV};
 		ArrayList<HashMap<String, Object>> mylistData = db.getAllFood();
-		SimpleAdapter arrayAdapter = new SimpleAdapter(DietActivity.this, mylistData, R.layout.display_vital_signs, columnTags , columnIds);
+		SimpleAdapter arrayAdapter = new SimpleAdapter(DietActivity.this, mylistData, R.layout.diet_food_and_exercise_list_display, columnTags , columnIds);
 		foodListDisplay.setAdapter(arrayAdapter);
+
+	}
+	
+	private void populateExercise() {
+		
+		String[] columnTags = new String[] {"exercise", "burned"};
+		int[] columnIds = new int[] {R.id.name_viewTV, R.id.cal_viewTV};
+		ArrayList<HashMap<String, Object>> mylistData = db.getAllEx();
+		SimpleAdapter arrayAdapter = new SimpleAdapter(DietActivity.this, mylistData, R.layout.diet_food_and_exercise_list_display, columnTags , columnIds);
+		
+		exerciseListDisplay.setAdapter(arrayAdapter);
 
 	}
 	

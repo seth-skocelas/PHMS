@@ -17,5 +17,16 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_logout"/>
-
+    <item
+        android:id="@+id/action_foodEditorActivity"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_foodEditorActivity"/>
+    <item
+        android:id="@+id/action_exerciseEditorActivity"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_exerciseEditorActivity"/>
+    
+    
 </menu>

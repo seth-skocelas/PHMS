@@ -117,6 +117,10 @@ public class Users
 	{
 		this.heightInches = _heightInches;
 	}
+	public void setWeight(int _weight)
+	{
+		this.weight = _weight;
+	}
 	public void setGender(String _gender)
 	{
 		this.gender = _gender;
