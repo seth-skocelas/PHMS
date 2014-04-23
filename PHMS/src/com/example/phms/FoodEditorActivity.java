@@ -95,10 +95,10 @@ public class FoodEditorActivity extends Activity {
 						try {
 							quanD = Double.parseDouble(quantity.getText().toString());
 							calD = Double.parseDouble(calories.getText().toString());
-							String string = (new Time()).toString();
+							//String string = (new Time()).toString();
 							
-							Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), string);
-							db.addFood(food_saved);
+							//Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), string);
+							//db.addFood(food_saved);
 							
 							double result = quanD*calD;
 							displayTotal = (TextView) findViewById(R.id.total);

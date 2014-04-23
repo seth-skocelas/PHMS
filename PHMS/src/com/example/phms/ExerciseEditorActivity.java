@@ -91,13 +91,13 @@ public class ExerciseEditorActivity extends Activity {
 						double calD=0;
 						try {
 							calD = Double.parseDouble(calories.getText().toString());
-							String string = (new Time()).toString();
+							//String string = (new Time()).toString();
 
 							
 							 
 							//Toast.makeText(ExerciseEditorActivity.this, string, Toast.LENGTH_LONG).show();
-							Exercise ex_saved = new Exercise(exercise.getText().toString(), calories.getText().toString(), string);
-							db.addExercise(ex_saved);
+							//Exercise ex_saved = new Exercise(exercise.getText().toString(), calories.getText().toString(), string);
+							//db.addExercise(ex_saved);
 							/*map.put("quan", quanD);
 							map.put("cal", calD);
 							mylistData.add(map);
