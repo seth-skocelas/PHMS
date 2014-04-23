@@ -361,7 +361,7 @@ public class FoodEditorActivity extends Activity {
 
 	}
 	@Override
-	protected void onResume() {
+	public void onResume() {
 
 	   super.onResume();
 	   this.onCreate(null);
