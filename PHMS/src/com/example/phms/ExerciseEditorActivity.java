@@ -43,6 +43,23 @@ public class ExerciseEditorActivity extends Activity {
 		db = new dbHelper(this);
 		addexerciseButton = (Button) findViewById(R.id.add_exercise_button);
 		hlist = db.getAllEx();
+		
+		ArrayList<String> constants = db.getFConstants("jesus");
+		double total = 0;
+		todayIntake = (TextView) findViewById(R.id.display_calories);
+		for (int a = 0; a<hlist.size();a++)
+        {
+            Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
+            //double result= Double.parseDouble(tmpData.get("quan").toString()) * Double.parseDouble(tmpData.get("cal").toString());
+            	 total+=Double.parseDouble(tmpData.get("burned").toString());
+            
+           
+        }
+		String display_today_calories = getString(R.string.calorie_burned_today);
+		display_today_calories = String.format(display_today_calories, total);
+		todayIntake.setText(display_today_calories);
+		db.updateFConstatnts("jesus", constants.get(0), constants.get(1),constants.get(2), total+"");
+//ending new code
 		//Toast.makeText(ExerciseEditorActivity.this,db.getCount()+"" , Toast.LENGTH_LONG).show();
 		populateListViewFromDB(hlist);
 		addexerciseButton.setOnClickListener(new View.OnClickListener(){
@@ -91,13 +108,13 @@ public class ExerciseEditorActivity extends Activity {
 						double calD=0;
 						try {
 							calD = Double.parseDouble(calories.getText().toString());
-							//String string = (new Time()).toString();
+							String string = (new Time()).toString();
 
 							
 							 
 							//Toast.makeText(ExerciseEditorActivity.this, string, Toast.LENGTH_LONG).show();
-							//Exercise ex_saved = new Exercise(exercise.getText().toString(), calories.getText().toString(), string);
-							//db.addExercise(ex_saved);
+							Exercise ex_saved = new Exercise(exercise.getText().toString(), calories.getText().toString(), string);
+							db.addExercise(ex_saved);
 							/*map.put("quan", quanD);
 							map.put("cal", calD);
 							mylistData.add(map);
@@ -338,7 +355,8 @@ public class ExerciseEditorActivity extends Activity {
                    
                 }
                 hlist.remove(index);
-                populateListViewFromDB(hlist);
+                onResume();
+                //populateListViewFromDB(hlist);
                 //list.remove(index);
       
             }

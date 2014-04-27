@@ -53,7 +53,23 @@ public class FoodEditorActivity extends Activity {
 		
 		//new code goes here
 		hlist = db.getAllFood();		
-		//populating from DB when first encountered with activity
+		//setting the todayIntake string
+		ArrayList<String> constants = db.getFConstants("jesus");
+		double total = 0;
+		todayIntake = (TextView) findViewById(R.id.display_calories);
+		for (int a = 0; a<hlist.size();a++)
+        {
+            Map<String, Object> tmpData = (HashMap<String, Object>) hlist.get(a);
+            double result= Double.parseDouble(tmpData.get("quan").toString()) * Double.parseDouble(tmpData.get("cal").toString());
+            	 total+=result;
+            
+           
+        }
+		String display_today_calories = getString(R.string.calorie_today);
+		display_today_calories = String.format(display_today_calories, total);
+		todayIntake.setText(display_today_calories);
+		db.updateFConstatnts("jesus", constants.get(0), constants.get(1), total+"", constants.get(3));
+//ending new code
 		populateListViewFromDB(hlist);
 		
 		addFoodButton.setOnClickListener(new OnClickListener(){
@@ -95,10 +111,10 @@ public class FoodEditorActivity extends Activity {
 						try {
 							quanD = Double.parseDouble(quantity.getText().toString());
 							calD = Double.parseDouble(calories.getText().toString());
-							//String string = (new Time()).toString();
+							String string = (new Time()).toString();
 							
-							//Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), string);
-							//db.addFood(food_saved);
+							Food food_saved = new Food(food.getText().toString(),quantity.getText().toString(), calories.getText().toString(), string);
+							db.addFood(food_saved);
 							
 							double result = quanD*calD;
 							displayTotal = (TextView) findViewById(R.id.total);
@@ -333,7 +349,8 @@ public class FoodEditorActivity extends Activity {
                    
                 }
                 hlist.remove(index);
-                populateListViewFromDB(hlist);
+                onResume();
+                //populateListViewFromDB(hlist);
                 //list.remove(index);
       
             }

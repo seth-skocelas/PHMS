@@ -80,9 +80,11 @@ public class RegisterActivity extends Activity {
 		String l = answer.getText().toString();
 		
 
-		Toast.makeText(RegisterActivity.this, age.getText().toString(), Toast.LENGTH_LONG).show();
+		//Toast.makeText(RegisterActivity.this, age.getText().toString(), Toast.LENGTH_LONG).show();
 		Users currentUser = new Users(a,b,c,d,e,f,g,h,i,j,k,l);
 		mDbHelper.addUser(currentUser);
+		mDbHelper.setFoodConstants(c, "s", "t", "i", "b");
+		//Toast.makeText(RegisterActivity.this, c, Toast.LENGTH_LONG).show();
 							
 						
 							

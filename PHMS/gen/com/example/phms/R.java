@@ -39,15 +39,27 @@ public final class R {
         public static final int Thursday=0x7f090005;
         public static final int Tuesday=0x7f090003;
         public static final int Wednesday=0x7f090004;
+<<<<<<< HEAD
         public static final int action_exerciseEditorActivity=0x7f090085;
         public static final int action_foodEditorActivity=0x7f090084;
         public static final int action_logout=0x7f090083;
         public static final int action_search=0x7f090081;
         public static final int action_settings=0x7f090082;
+=======
+        public static final int action_exerciseEditorActivity=0x7f090086;
+        public static final int action_foodEditorActivity=0x7f090085;
+        public static final int action_logout=0x7f090084;
+        public static final int action_search=0x7f090082;
+        public static final int action_settings=0x7f090083;
+>>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
         public static final int addSignButton=0x7f09005b;
-        public static final int add_exercise=0x7f090073;
+        public static final int add_exercise=0x7f090074;
         public static final int add_exercise_button=0x7f09003f;
+<<<<<<< HEAD
         public static final int add_food=0x7f090072;
+=======
+        public static final int add_food=0x7f090073;
+>>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
         public static final int add_food_button=0x7f090043;
         public static final int btnStop=0x7f090019;
         public static final int btncancel2=0x7f090008;
@@ -62,7 +74,7 @@ public final class R {
         public static final int calTV=0x7f090066;
         public static final int cal_ex_TV=0x7f090060;
         public static final int cal_viewTV=0x7f09005e;
-        public static final int calorie_text=0x7f090077;
+        public static final int calorie_text=0x7f090078;
         public static final int calories=0x7f09003c;
         public static final int con_list=0x7f09005c;
         public static final int container=0x7f09001b;
@@ -104,20 +116,29 @@ public final class R {
         public static final int empty=0x7f090022;
         public static final int empty2=0x7f090024;
         public static final int exTV=0x7f09005f;
-        public static final int exercise_editor=0x7f090074;
-        public static final int exercise_editor_caloriestv=0x7f090076;
+        public static final int exercise_editor=0x7f090075;
+        public static final int exercise_editor_caloriestv=0x7f090077;
         public static final int exercise_list=0x7f09003d;
         public static final int exercise_list_diet=0x7f090023;
-        public static final int exercise_text=0x7f090075;
+        public static final int exercise_text=0x7f090076;
         public static final int exercisetv=0x7f09003b;
         public static final int fn=0x7f090051;
         public static final int foodTV=0x7f090064;
+<<<<<<< HEAD
         public static final int food_editor_caloriestv=0x7f09007c;
         public static final int food_editor_food=0x7f090078;
         public static final int food_editor_quantitytv=0x7f09007a;
         public static final int food_list=0x7f090042;
         public static final int food_list_diet=0x7f090021;
         public static final int food_text=0x7f090079;
+=======
+        public static final int food_editor_caloriestv=0x7f09007d;
+        public static final int food_editor_food=0x7f090079;
+        public static final int food_editor_quantitytv=0x7f09007b;
+        public static final int food_list=0x7f090042;
+        public static final int food_list_diet=0x7f090021;
+        public static final int food_text=0x7f09007a;
+>>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
         public static final int foodtv=0x7f090040;
         public static final int help_links=0x7f090026;
         public static final int linearLayout1=0x7f090020;
@@ -128,8 +149,9 @@ public final class R {
         public static final int name_viewTV=0x7f09005d;
         public static final int quanTV=0x7f090065;
         public static final int quantTV=0x7f090068;
-        public static final int quantity_text=0x7f09007b;
+        public static final int quantity_text=0x7f09007c;
         public static final int quantitytv=0x7f090041;
+<<<<<<< HEAD
         public static final int radioButton_heavy=0x7f090070;
         public static final int radioButton_light=0x7f09006e;
         public static final int radioButton_little_to_no=0x7f09006d;
@@ -138,10 +160,21 @@ public final class R {
         public static final int radioGroup1=0x7f09006c;
         public static final int reading=0x7f090080;
         public static final int readingSignLetter=0x7f09007f;
+=======
+        public static final int radioButton_heavy=0x7f090071;
+        public static final int radioButton_light=0x7f09006f;
+        public static final int radioButton_little_to_no=0x7f09006e;
+        public static final int radioButton_moderate=0x7f090070;
+        public static final int radioButton_very_heavy=0x7f090072;
+        public static final int radioGroup1=0x7f09006d;
+        public static final int reading=0x7f090081;
+        public static final int readingSignLetter=0x7f090080;
+>>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
         public static final int sms=0x7f09001d;
         public static final int smsbutton8=0x7f090048;
         public static final int spinner1=0x7f090057;
         public static final int suggestedCalorie=0x7f09001e;
+        public static final int textDisplay=0x7f09006c;
         public static final int textView1=0x7f09000b;
         public static final int textView10=0x7f09002a;
         public static final int textView11=0x7f090029;
@@ -161,8 +194,8 @@ public final class R {
         public static final int unitTV=0x7f090069;
         public static final int valueTV=0x7f09006b;
         public static final int view_con_button=0x7f090018;
-        public static final int vital=0x7f09007e;
-        public static final int vitalSignLetter=0x7f09007d;
+        public static final int vital=0x7f09007f;
+        public static final int vitalSignLetter=0x7f09007e;
         public static final int vitalTV=0x7f09006a;
         public static final int vital_list=0x7f090059;
         public static final int yourVital=0x7f090058;
@@ -174,6 +207,7 @@ public final class R {
         public static final int activity_alarm_screen=0x7f030003;
         public static final int activity_alert=0x7f030004;
         public static final int activity_communication=0x7f030005;
+<<<<<<< HEAD
         public static final int activity_confliction=0x7f030006;
         public static final int activity_diet=0x7f030007;
         public static final int activity_edit_account=0x7f030008;
@@ -203,6 +237,35 @@ public final class R {
         public static final int exercise_object=0x7f030020;
         public static final int food_object=0x7f030021;
         public static final int vital_edit=0x7f030022;
+=======
+        public static final int activity_diet=0x7f030006;
+        public static final int activity_edit_account=0x7f030007;
+        public static final int activity_exercise_editor=0x7f030008;
+        public static final int activity_food_editor=0x7f030009;
+        public static final int activity_login=0x7f03000a;
+        public static final int activity_main_menu=0x7f03000b;
+        public static final int activity_medication=0x7f03000c;
+        public static final int activity_recover=0x7f03000d;
+        public static final int activity_register=0x7f03000e;
+        public static final int activity_repeating_alarm=0x7f03000f;
+        public static final int activity_result=0x7f030010;
+        public static final int activity_search=0x7f030011;
+        public static final int activity_settings=0x7f030012;
+        public static final int activity_vital_signs=0x7f030013;
+        public static final int confliction_object=0x7f030014;
+        public static final int diet_food_and_exercise_list_display=0x7f030015;
+        public static final int display_conflictions=0x7f030016;
+        public static final int display_exercise_items=0x7f030017;
+        public static final int display_food=0x7f030018;
+        public static final int display_items=0x7f030019;
+        public static final int display_med_items=0x7f03001a;
+        public static final int display_vital_list=0x7f03001b;
+        public static final int display_vital_signs=0x7f03001c;
+        public static final int edit_suggested_calorie=0x7f03001d;
+        public static final int exercise_object=0x7f03001e;
+        public static final int food_object=0x7f03001f;
+        public static final int vital_edit=0x7f030020;
+>>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
     }
     public static final class menu {
         public static final int add_alert=0x7f080000;
@@ -210,22 +273,20 @@ public final class R {
         public static final int alarm_receiver=0x7f080002;
         public static final int alert=0x7f080003;
         public static final int communication=0x7f080004;
-        public static final int confliction=0x7f080005;
-        public static final int diet=0x7f080006;
-        public static final int edit_account=0x7f080007;
-        public static final int edit_medication=0x7f080008;
-        public static final int exercise_editor=0x7f080009;
-        public static final int food_editor=0x7f08000a;
-        public static final int login=0x7f08000b;
-        public static final int main_menu=0x7f08000c;
-        public static final int medication=0x7f08000d;
-        public static final int recover=0x7f08000e;
-        public static final int register=0x7f08000f;
-        public static final int repeating_alarm=0x7f080010;
-        public static final int result=0x7f080011;
-        public static final int search=0x7f080012;
-        public static final int settings=0x7f080013;
-        public static final int vital_signs=0x7f080014;
+        public static final int diet=0x7f080005;
+        public static final int edit_account=0x7f080006;
+        public static final int exercise_editor=0x7f080007;
+        public static final int food_editor=0x7f080008;
+        public static final int login=0x7f080009;
+        public static final int main_menu=0x7f08000a;
+        public static final int medication=0x7f08000b;
+        public static final int recover=0x7f08000c;
+        public static final int register=0x7f08000d;
+        public static final int repeating_alarm=0x7f08000e;
+        public static final int result=0x7f08000f;
+        public static final int search=0x7f080010;
+        public static final int settings=0x7f080011;
+        public static final int vital_signs=0x7f080012;
     }
     public static final class string {
         public static final int action_exerciseEditorActivity=0x7f050055;

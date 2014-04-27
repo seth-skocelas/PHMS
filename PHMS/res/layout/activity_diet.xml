@@ -8,7 +8,7 @@
         android:id="@+id/suggestedCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/suggestedCalorie_test"
+        android:text="Suggested Calorie Intake: N/A"
         android:textAppearance="?android:attr/textAppearanceLarge" >
         </TextView>
 
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:paddingTop="2dp"
-            android:text="@string/today_calories"
+            android:text="Today's Calories: N/A"
             android:textAppearance="?android:attr/textAppearanceLarge" >
 
             </TextView>
@@ -68,7 +68,7 @@
 
         <TextView
             android:id="@+id/empty"
-            android:layout_width="match_parent"
+            android:layout_width="177dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="No Food Present" > 
@@ -87,6 +87,7 @@
             android:id="@+id/empty2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="right"
             android:layout_weight="1"
             android:gravity="right"
             android:text="No Exercise Present" >

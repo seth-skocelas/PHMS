@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
 PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
 platformState=1393471879708
-=======
-PROBLEMS_FILTERS_MIGRATE=true
-eclipse.preferences.version=1
-<<<<<<< HEAD
-platformState=1393471879708
-=======
-platformState=1396976472309
->>>>>>> 4086789fc8e6d5109a8761928f02239b901cb3ae
->>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
 quickStart=false
 tipsAndTricks=true

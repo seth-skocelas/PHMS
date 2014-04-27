@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 INDEX VERSION 1.126+C:\Users\Jesus\Documents\GitHub\PHMS\.metadata\.plugins\org.eclipse.jdt.core
-2887939567.index
-=======
-INDEX VERSION 1.126+C:\Users\smpham\Documents\GitHub\PHMS\.metadata\.plugins\org.eclipse.jdt.core
 972044043.index
->>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
+2887939567.index
+1160049795.index
