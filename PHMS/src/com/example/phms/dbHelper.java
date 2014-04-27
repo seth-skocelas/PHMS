@@ -289,10 +289,7 @@ Class variables
     	
     }
     
-<<<<<<< HEAD
-=======
 
->>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
     public void deleteMedicine(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
@@ -344,15 +341,10 @@ Class variables
         return mylistData;
     }
     
-<<<<<<< HEAD
-public void addExercise(Exercise ex)
-
-=======
 
 
     public void addExercise(Exercise ex)
 
->>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
     {
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
