@@ -2,6 +2,8 @@ package com.example.phms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,12 +16,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class AddMedicationActivity extends Activity {
@@ -33,13 +38,16 @@ public class AddMedicationActivity extends Activity {
 	public EditText conflictions;
 	final Context context = this;
 	private static int count=0;
+	private int conCount = 0, timeCount = 0;
 	dbHelper mDbHelper;
-	String [] currentConflictions = new String[10];
+	String [] currentConflictions = {" "," "," "," "," "," "," "," "," "," "};
+	String [] alarmDays = {" "," "," "," "," "," "," "," "};
+	String [] currentTimes = {" "," "," "," "," "};
 	public static String strSeparator = "__,__";
-	int numC = 0;
-	String conflictionList;
-	private Button viewConButton;
-	private ListView cList;
+	int numC = 0, i;
+	String conflictionList, daysList, timesList, cTime;
+	private Button viewConButton, viewTimeButton, addTimeButton;
+	private ListView cList, tList;
 
 	
 
@@ -49,13 +57,13 @@ public class AddMedicationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_medication);
 		name = (EditText) findViewById(R.id.edit_name);
-	    times_per = (EditText) findViewById(R.id.edit_times_per);
 		dosage = (EditText) findViewById(R.id.edit_dosage);
 	    unit = (EditText) findViewById(R.id.edit_unit);
 		conflictions = (EditText) findViewById(R.id.edit_conflictions);
 		mDbHelper = new dbHelper(getBaseContext());
 		viewConButton = (Button) findViewById(R.id.view_con_button);
-		
+		viewTimeButton = (Button) findViewById(R.id.view_times_button);
+		addTimeButton = (Button) findViewById(R.id.add_time_button);
 		
 		viewConButton.setOnClickListener(new OnClickListener(){
 			@Override
@@ -67,7 +75,17 @@ public class AddMedicationActivity extends Activity {
 				setCon();
 				
 				
-				
+				cList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			        @Override
+			        public boolean onItemLongClick(AdapterView<?> arg0, View v, int index, long arg3) {
+			        	//Log.d("in onLongClick");
+		                String str=cList.getItemAtPosition(index).toString();
+		                removeItemFromList(index);
+		                //Toast.makeText(getApplicationContext(),str , Toast.LENGTH_LONG).show();
+		                //Log.d("long click : " +str);
+		               return true;
+			        		}
+					});
 				
 				
 
@@ -80,9 +98,6 @@ public class AddMedicationActivity extends Activity {
 				
 				
  
-				 
-				// set dialog message
-				
 				
 				alert.setOnShowListener(new DialogInterface.OnShowListener() {
 
@@ -106,9 +121,210 @@ public class AddMedicationActivity extends Activity {
 				
 			alert.show();	
 			}
+			
+			
+			
+		});
+		
+		
+		viewTimeButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				
+				LayoutInflater li = LayoutInflater.from(context);
+				View promptsView = li.inflate(R.layout.view_time_object, null);
+				tList = (ListView) promptsView.findViewById(R.id.time_list);
+				setTimes();
+				
+				
+				tList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			        @Override
+			        public boolean onItemLongClick(AdapterView<?> arg0, View v, int index, long arg3) {
+			        	//Log.d("in onLongClick");
+		                String str=tList.getItemAtPosition(index).toString();
+		                removeTimeFromList(index);
+		                //Toast.makeText(getApplicationContext(),str , Toast.LENGTH_LONG).show();
+		                //Log.d("long click : " +str);
+		               return true;
+			        		}
+					});
+				
+				
+
+ 
+				final AlertDialog alert = new AlertDialog.Builder(context)
+ 
+				.setView(promptsView)
+				.setNegativeButton("Cancel", null)
+				.create();
+				
+				
+ 
+				
+				alert.setOnShowListener(new DialogInterface.OnShowListener() {
+
+				@Override
+				public void onShow(DialogInterface dialog) {
+
+				
+					
+					Button cancel = alert.getButton(AlertDialog.BUTTON_NEGATIVE);
+					cancel.setOnClickListener(new View.OnClickListener() {
+
+						@Override
+						public void onClick(View view) 
+						{
+               
+							alert.dismiss();
+						}
+					});
+				}
+			});
+				
+			alert.show();	
+			}
+			
+			
+			
+		});
+		
+		
+		
+		addTimeButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				
+				LayoutInflater li = LayoutInflater.from(context);
+				View promptsView = li.inflate(R.layout.dt_object, null);
+				final CheckBox sunday = (CheckBox) promptsView.findViewById(R.id.Sunday);
+				final CheckBox monday = (CheckBox) promptsView.findViewById(R.id.Monday);
+				final CheckBox tuesday = (CheckBox) promptsView.findViewById(R.id.Tuesday);
+				final CheckBox wednesday = (CheckBox) promptsView.findViewById(R.id.Wednesday);
+				final CheckBox thursday = (CheckBox) promptsView.findViewById(R.id.Thursday);
+				final CheckBox friday = (CheckBox) promptsView.findViewById(R.id.Friday);
+				final CheckBox saturday = (CheckBox) promptsView.findViewById(R.id.Saturday);
+				final CheckBox everyday = (CheckBox) promptsView.findViewById(R.id.Everyday);
+				final TimePicker time = (TimePicker) promptsView.findViewById(R.id.time);
+				
+				if (alarmDays[0].equals("sunday"))
+					sunday.setChecked(true);
+				if (alarmDays[1].equals("monday"))
+					monday.setChecked(true);
+				if (alarmDays[2].equals("tuesday"))
+					tuesday.setChecked(true);
+				if (alarmDays[3].equals("wednesday"))
+					wednesday.setChecked(true);
+				if (alarmDays[4].equals("thursday"))
+					thursday.setChecked(true);
+				if (alarmDays[5].equals("friday"))
+					friday.setChecked(true);
+				if (alarmDays[6].equals("saturday"))
+					saturday.setChecked(true);
+				if (alarmDays[7].equals("everyday"))
+					everyday.setChecked(true);
+				
+				
+				
+					
+			
+ 
+				final AlertDialog alert = new AlertDialog.Builder(context)
+ 
+				.setView(promptsView)
+				.setPositiveButton("Add", null)
+				.setNegativeButton("Cancel", null)
+				.create();
+				
+				
+ 
+				
+				alert.setOnShowListener(new DialogInterface.OnShowListener() {
+
+				@Override
+				public void onShow(DialogInterface dialog) {
+
+				
+					
+					Button cancel = alert.getButton(AlertDialog.BUTTON_NEGATIVE);
+					cancel.setOnClickListener(new View.OnClickListener() {
+
+						@Override
+						public void onClick(View view) 
+						{
+               
+							alert.dismiss();
+						}
+					});
+					
+					Button add = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+					add.setOnClickListener(new View.OnClickListener() {
+
+						@Override
+						public void onClick(View view) 
+						{
+							for (i = 0; i < 8; i++)
+								alarmDays[i] = " ";
+							
+							if (sunday.isChecked()) {
+								alarmDays[0] = "sunday";
+							}
+							if (monday.isChecked()) {
+								alarmDays[1] = "monday";
+							}
+							if (tuesday.isChecked()) {
+								alarmDays[2] = "tuesday";
+							}
+							if (wednesday.isChecked()) {
+								alarmDays[3] = "wednesday";
+							}
+							if (thursday.isChecked()) {
+								alarmDays[4] = "thursday";
+							}
+							if (friday.isChecked()) {
+								alarmDays[5] = "friday";
+							}
+							if (saturday.isChecked()) {
+								alarmDays[6] = "saturday";
+							}
+							if (everyday.isChecked()) {
+								alarmDays[7] = "everyday";
+							}
+							
+							int hour = time.getCurrentHour();
+							int min = time.getCurrentMinute();
+							
+							if (min < 10)
+								cTime = hour + ":0" + min;
+							else
+								cTime = hour + ":" + min;
+								
+							if (timeCount <=4 ) {
+								currentTimes[timeCount] = cTime;
+								timeCount++;
+							}
+               
+							alert.dismiss();
+						}
+					});
+				}
+			});
+				
+			alert.show();	
+			}
+			
+			
+			
 		});
 		
 	}
+	
+	
+	
+		
+		
+	
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,15 +386,18 @@ public class AddMedicationActivity extends Activity {
 		    	  
 		    	  
 		    	  String a = name.getText().toString();
-		    	  int b = Integer.parseInt(times_per.getText().toString());
 		    	  int c = Integer.parseInt(dosage.getText().toString());
 		    	  String d = unit.getText().toString();
 		    	  conflictionList = convertArrayToString(currentConflictions);
+		    	  timesList = convertArrayToString(currentTimes);
+		    	  daysList = convertArrayToString(alarmDays);
 		    	  
-		    	  Medicine currentMedicine = new Medicine(a,a,b,c,d,conflictionList,(count++ + ""));
+		    	  Medicine currentMedicine = new Medicine(a,a,1,c,d,conflictionList,(count++ + ""),conCount,
+		    			  									timesList, timeCount, daysList);
 		  		  mDbHelper.addMedicine(currentMedicine);
 		  		  mDbHelper.close();
-		  		  
+		  		  conCount = 0;
+		  		  timeCount = 0;
 		    	  endActivity();
 		 
 		    } });
@@ -192,6 +411,17 @@ public class AddMedicationActivity extends Activity {
 		alertDialog.show();
 		
 	}
+/* Old, not in use	
+	
+	public void viewConflictions (View view) {
+		Bundle b=new Bundle();
+		b.putStringArray("key", currentConflictions);
+		Intent intent = new Intent(this, ConflictionActivity.class);
+		intent.putExtras(b);
+	    startActivity(intent);
+	}
+	
+	*/
 	
 	public void addConfliction(View view) {
 		
@@ -203,8 +433,8 @@ public class AddMedicationActivity extends Activity {
 		      public void onClick(DialogInterface dialog, int which) {
 		    	  
 		    	  String e = conflictions.getText().toString();
-		    	  currentConflictions[numC] = e;
-		    	  numC++;
+		    	  currentConflictions[conCount] = e;
+		    	  conCount++;
 		 
 
 		 
@@ -236,13 +466,7 @@ public class AddMedicationActivity extends Activity {
 	    return arr;
 	}
 	
-	private void populateListViewFromDB(String[] myListData) {
-		
-		ArrayAdapter<String> itemsAdapter = 
-			    new ArrayAdapter<String>(this, R.layout.display_conflictions, myListData);
-		cList.setAdapter(itemsAdapter);
-
-	}
+	
 	
 	
 	public void endActivity() {
@@ -258,11 +482,111 @@ public class AddMedicationActivity extends Activity {
 		cList.setAdapter(itemsAdapter);
 	}
 	
+	public void setTimes() {
+		ArrayAdapter<String> itemsAdapter = 
+			    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, currentTimes);
+		tList.setAdapter(itemsAdapter);
+	}
+	
 	@Override
 	public void onBackPressed() {
 	
 		endActivity();
 	    
 	}
+	
+
+
+    private void removeTimeFromList(int position) {
+        //final int deletePosition = position;
+        final int index = position;
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                AddMedicationActivity.this);
+    
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete this item?");
+        alert.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TOD O Auto-generated method stub
+                    
+                    // main code on after clicking yes
+                    //list.remove(deletePosition);
+                    //adapter.notifyDataSetChanged();
+                    //adapter.notifyDataSetInvalidated();
+        		if (index == 4) 
+        			currentTimes[4] = " ";
+        		else {
+        			for (int a = index + 1; a <= 4; a++)
+                    {
+        				currentTimes[a-1] = currentTimes[a];
+                    }
+        			currentTimes[4] = " ";
+        		}
+                
+                   
+                timeCount--;
+                setTimes();
+                
+      
+            }
+        });
+        alert.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+      
+        alert.show();
+      
+    }
+    
+    private void removeItemFromList(int position) {
+        //final int deletePosition = position;
+        final int index = position;
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                AddMedicationActivity.this);
+    
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete this item?");
+        alert.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TOD O Auto-generated method stub
+                    
+                    // main code on after clicking yes
+                    //list.remove(deletePosition);
+                    //adapter.notifyDataSetChanged();
+                    //adapter.notifyDataSetInvalidated();
+        		if (index == 9) 
+        			currentConflictions[9] = " ";
+        		else {
+        			for (int a = index + 1; a <= 9; a++)
+                    {
+        				currentConflictions[a-1] = currentConflictions[a];
+                    }
+        			currentConflictions[9] = " ";
+        		}
+                
+                   
+                conCount--;
+                setCon();
+                
+      
+            }
+        });
+        alert.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+      
+        alert.show();
+      
+    }
 
 }

@@ -131,19 +131,6 @@
         android:ems="10"
         android:inputType="number" />
 
-    <EditText
-        android:id="@+id/edit_times_per"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/edit_conflictions"
-        android:ems="10"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
-
     <Button
         android:id="@+id/view_con_button"
         style="?android:attr/buttonStyleSmall"
@@ -154,5 +141,25 @@
         android:layout_below="@+id/button1"
         android:layout_marginTop="16dp"
         android:text="View" />
+
+    <Button
+        android:id="@+id/view_times_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="16dp"
+        android:text="View/Delete Times" />
+
+    <Button
+        android:id="@+id/add_time_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/view_times_button"
+        android:layout_alignBottom="@+id/view_times_button"
+        android:layout_alignRight="@+id/edit_unit"
+        android:text="Add Days/Time" />
 
 </RelativeLayout>

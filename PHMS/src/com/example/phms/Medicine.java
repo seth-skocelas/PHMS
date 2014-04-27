@@ -1,7 +1,9 @@
 package com.example.phms;
 
+import java.io.Serializable;
 
-public class Medicine 
+
+public class Medicine implements Serializable
 {
 	private String username;
 	private String name;
@@ -10,8 +12,13 @@ public class Medicine
 	private String unit;
 	private String conflictions;
 	private String id;
+	private int count;
+	private String times;
+	private int timeCount;
+	private String days;
 	
-	public Medicine (String _username, String _name, int _timesPer, int _dosage, String _unit, String _conflictions, String _id)
+	public Medicine (String _username, String _name, int _timesPer, int _dosage, String _unit, String _conflictions, String _id,
+					 int _count, String _times, int _timeCount, String _days)
 	{
 		this.username = _username;
 		this.name = _name;
@@ -19,7 +26,11 @@ public class Medicine
 		this.dosage = _dosage;
 		this.unit = _unit;
 		this.conflictions = _conflictions;
-		this.id = _id;//create own class maybe
+		this.id = _id;
+		this.count = _count;
+		this.times = _times;
+		this.timeCount = _timeCount;
+		this.days = _days;
 	}
 	public Medicine() {
 		// TODO Auto-generated constructor stub
@@ -53,6 +64,22 @@ public class Medicine
 	{
 		return this.id;
 	}
+	public int getCount()
+	{
+		return this.count;
+	}
+	public String getTimes()
+	{
+		return this.times;
+	}
+	public String getDays()
+	{
+		return this.days;
+	}
+	public int getTimeCount()
+	{
+		return this.timeCount;
+	}
 	//setters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 	public void setID(String _id)
 	{
@@ -81,5 +108,21 @@ public class Medicine
 	public void setConflictions(String _conflictions)
 	{
 		this.conflictions = _conflictions;
+	}
+	public void setCount(int _count)
+	{
+		this.count = _count;
+	}
+	public void setDays(String _days)
+	{
+		this.days = _days;
+	}
+	public void setTimes(String _times)
+	{
+		this.times = _times;
+	}
+	public void setTimeCount(int _timeCount)
+	{
+		this.timeCount = _timeCount;
 	}
 }

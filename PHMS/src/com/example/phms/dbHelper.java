@@ -50,11 +50,16 @@ Class variables
 	private static final String TABLE_MEDICINE = "MEDICINE";
 	static final String KEY_MUSER = "user_name";
 	static final String KEY_MNAME = "medicine_name";
-	static final String KEY_TIMES_PER = "times_per";
+	static final String KEY_TIMES_PER = "times_per";		//not used
 	static final String KEY_DOSAGE = "dosage";
 	static final String KEY_UNIT = "unit";
 	static final String KEY_CONFLICTIONS = "conflictions";
 	static final String KEY_ID = "id";
+	static final String KEY_CON = "con_count";
+	static final String KEY_TIMES = "times";
+	static final String KEY_TIME_COUNT = "time_count";
+	static final String KEY_DAYS = "days";
+	
 	
 	
 	private static final String TABLE_FCONSTANTS = "FCONSTANTS";
@@ -85,7 +90,8 @@ Class variables
 	private static final String SQL_CREATE_MEDICINE_TABLE = 
 			"CREATE TABLE " + TABLE_MEDICINE + " ("
 					+ KEY_MUSER + " TEXT," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
-					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT" + " )";
+					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT," + KEY_CON + " INT,"
+					+ KEY_TIMES + " TEXT," + KEY_TIME_COUNT + " INT," + KEY_DAYS + " TEXT" + " )";
 	
 	private static final String SQL_CREATE_FCONSTANTS_TABLE = 
 			"CREATE TABLE " + TABLE_FCONSTANTS + " ("
@@ -306,7 +312,7 @@ Class variables
         db.close(); // Closing database connection
     }
     
-    public void addMedicine (Medicine medicine) {
+public void addMedicine (Medicine medicine) {
     	
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
@@ -318,22 +324,23 @@ Class variables
     	cv.put(KEY_UNIT, medicine.getUnit());
     	cv.put(KEY_CONFLICTIONS, medicine.getConflictions());
     	cv.put(KEY_ID, medicine.getID());
+    	cv.put(KEY_CON, medicine.getCount());
+    	cv.put(KEY_TIMES, medicine.getTimes());
+    	cv.put(KEY_TIME_COUNT, medicine.getTimeCount());
+    	cv.put(KEY_DAYS, medicine.getDays());
     	
     	db.insert(TABLE_MEDICINE, null, cv);
     	
     }
     
-<<<<<<< HEAD
 
-=======
->>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
     public void deleteMedicine(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
                 new String[] { String.valueOf(timeStamp) });
         db.close();
     }
-
+    
     
     public  ArrayList<HashMap<String, Object>> getAllMedicine() {
     	
@@ -359,14 +366,22 @@ Class variables
                 m.setUnit(cursor.getString(4));
                 m.setConflictions(cursor.getString(5));
                 m.setID(cursor.getString(6));
+                m.setCount(Integer.parseInt(cursor.getString(7)));
+                m.setTimes(cursor.getString(8));
+                m.setTimeCount(Integer.parseInt(cursor.getString(9)));
+                m.setDays(cursor.getString(10));
                 // Adding contact to list
                 map.put("user", m.getUserName());
 				map.put("name", m.getName());
-				map.put("times", m.getTimesPer());
+				map.put("times_per", m.getTimesPer());
 				map.put("quant", m.getDosage());
 				map.put("unit", m.getUnit());
 				map.put("con", m.getConflictions());
 				map.put("id", m.getID());
+				map.put("con_count", m.getCount());
+				map.put("times", m.getTimes());
+				map.put("time_count", m.getTimeCount());
+				map.put("days", m.getDays());
 				
 				mylistData.add(map);
             } while (cursor.moveToNext());
@@ -376,13 +391,8 @@ Class variables
         return mylistData;
     }
     
-<<<<<<< HEAD
 
-
-    public void addExercise(Exercise ex)
-=======
 public void addExercise(Exercise ex)
->>>>>>> 2d5a0d91f2b16a0fe04dcb9e346c259e76480c71
 
     {
     	SQLiteDatabase db = this.getWritableDatabase();
