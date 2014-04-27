@@ -79,5 +79,12 @@ public class MainMenuActivity extends Activity {
 
 }
 	
+//displayVitalSigns
+	public void displayVitalSigns(View view) {
+		
+		Intent intent = new Intent(this, VitalSignsActivity.class);
+	    startActivity(intent);
 
+}
+	
 }

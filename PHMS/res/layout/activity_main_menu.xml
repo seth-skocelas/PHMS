@@ -48,6 +48,7 @@
         android:layout_above="@+id/button3"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="80dp"
+        android:onClick="displayVitalSigns"
         android:text="@string/vital_signs" />
 
     <Button

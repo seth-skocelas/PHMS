@@ -43,7 +43,7 @@ public class AlarmReceiverActivity extends Activity{
 		setContentView(R.layout.activity_alarm_screen);
 		
 		Button stopAlarm = (Button) findViewById(R.id.btnStop);
-		delaySms();
+		//delaySms();
 		stopAlarm.setOnClickListener(new OnClickListener(){
 			public void onClick(View arg0)
 			{
@@ -51,7 +51,7 @@ public class AlarmReceiverActivity extends Activity{
 				finish();
 				//add toast
 				//cancel delay timer
-				timer.cancel();
+				//timer.cancel();
 			}
 		});
 		playSound(this, getAlarmUri());
@@ -79,27 +79,31 @@ public class AlarmReceiverActivity extends Activity{
 	
 	private void delaySms(){
 		timer = new Timer();
-		timer.schedule(task,10*1000);
+		
+		final CommunicationActivity ca = new CommunicationActivity();
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+				ca.sendSms();
+				Toast.makeText(AlarmReceiverActivity.this, "send", Toast.LENGTH_LONG).show();
+				
+			}
+			
+		};
+		timer.scheduleAtFixedRate(timerTask, 0, 10 * 1000);
+		Toast.makeText(AlarmReceiverActivity.this, "reach delay sms", Toast.LENGTH_LONG).show();
+		
+		
 		
 	}
-	
-	TimerTask task = new TimerTask(){
-		CommunicationActivity ca = new CommunicationActivity();
-	       @Override
-	        public void run() {
-	            System.out.println("ReminderTask is completed by Java timer");
-	
-	            ca.sendSms();
-	            //Toast.makeText(AlarmReceiverActivity.this, "message sent", Toast.LENGTH_LONG).show();
-	            //timer.cancel(); //Not necessary because we call System.exit
-	            //System.exit(0); //Stops the AWT thread (and everything else)
-	        }
-	};
 	
 	private Uri getAlarmUri()
 	{
 		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-		if (alert == null)
+		if (alert ==null)
 		{
 			alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 			if (alert == null)

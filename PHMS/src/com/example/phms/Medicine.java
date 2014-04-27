@@ -1,9 +1,7 @@
 package com.example.phms;
 
-import java.io.Serializable;
 
-
-public class Medicine implements Serializable
+public class Medicine 
 {
 	private String username;
 	private String name;
@@ -12,10 +10,8 @@ public class Medicine implements Serializable
 	private String unit;
 	private String conflictions;
 	private String id;
-	private int count;
 	
-	public Medicine (String _username, String _name, int _timesPer, int _dosage, String _unit, String _conflictions, String _id,
-					 int _count)
+	public Medicine (String _username, String _name, int _timesPer, int _dosage, String _unit, String _conflictions, String _id)
 	{
 		this.username = _username;
 		this.name = _name;
@@ -23,8 +19,7 @@ public class Medicine implements Serializable
 		this.dosage = _dosage;
 		this.unit = _unit;
 		this.conflictions = _conflictions;
-		this.id = _id;
-		this.count = _count; //create own class maybe
+		this.id = _id;//create own class maybe
 	}
 	public Medicine() {
 		// TODO Auto-generated constructor stub
@@ -58,10 +53,6 @@ public class Medicine implements Serializable
 	{
 		return this.id;
 	}
-	public int getCount()
-	{
-		return this.count;
-	}
 	//setters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 	public void setID(String _id)
 	{
@@ -90,9 +81,5 @@ public class Medicine implements Serializable
 	public void setConflictions(String _conflictions)
 	{
 		this.conflictions = _conflictions;
-	}
-	public void setCount(int _count)
-	{
-		this.count = _count;
 	}
 }

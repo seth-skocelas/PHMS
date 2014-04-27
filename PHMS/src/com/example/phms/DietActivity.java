@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class DietActivity extends Activity {
 	private RadioButton radio_button_test;
 	private int num;
 	private TextView displayingCalories;
+	private TextView todayCalories;
 	private RadioButton little;
 	private RadioButton light;
 	private RadioButton moderate;
@@ -43,19 +45,46 @@ public class DietActivity extends Activity {
 	private View promptsView;
 	//private TextView suggestedCalorieDisplay;
 	protected dbHelper db;
-	//private TextView emptyview;
-	//private ListView foodList;
-	
-	//private EditText result;
+	ArrayList<String> constants;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_diet);
 		db = new dbHelper(this);
+		//using this with test user
+		displayingCalories = (TextView) findViewById(R.id.suggestedCalorie);
+		constants = db.getFConstants("jesus");
+		String suggestedView = getString(R.string.suggestedCalorie_test);
+		//Toast.makeText(DietActivity.this, c, Toast.LENGTH_SHORT).show();
+		
+		if (!constants.get(0).equals("s")){
+			suggestedView = String.format(suggestedView, Double.parseDouble(constants.get(0)));
+			displayingCalories.setText(suggestedView);
+			
+		}
+		
+		todayCalories = (TextView) findViewById(R.id.todaysCalorie);
+		String displayingToday = getString(R.string.today_calories);
+		double calToday=0;
+		if (!constants.get(2).equals("i") && !constants.get(3).equals("b")){
+			calToday = Double.parseDouble(constants.get(2)) - Double.parseDouble(constants.get(3));
+		}
+		else if (!constants.get(2).equals("i") && constants.get(3).equals("b")){
+			calToday = Double.parseDouble(constants.get(2));
+		}
+		else if(constants.get(2).equals("i") && !constants.get(3).equals("b")){
+			calToday = 0-Double.parseDouble(constants.get(3));
+		}
+		displayingToday = String.format(displayingToday, calToday);
+		todayCalories.setText(displayingToday);
+		
+		
+		
+		
 		button = (Button) findViewById(R.id.edit_diet);
 		
-		displayingCalories = (TextView) findViewById(R.id.suggestedCalorie);
+		
 
 		foodListDisplay = (ListView) findViewById(R.id.food_list_diet);
 		exerciseListDisplay = (ListView) findViewById(R.id.exercise_list_diet);
@@ -69,6 +98,69 @@ public class DietActivity extends Activity {
 			// get prompts.xml view
 			LayoutInflater li = LayoutInflater.from(context);
 			promptsView = li.inflate(R.layout.edit_suggested_calorie, null);
+			little = (RadioButton) promptsView.findViewById(R.id.radioButton_little_to_no);
+			light = (RadioButton) promptsView.findViewById(R.id.radioButton_light);
+			moderate = (RadioButton) promptsView.findViewById(R.id.radioButton_moderate);
+			heavy = (RadioButton) promptsView.findViewById(R.id.radioButton_heavy);
+			veryHeavy = (RadioButton) promptsView.findViewById(R.id.radioButton_very_heavy);
+			TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+	    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+	    	if (!constants.get(0).equals("s")){
+	    		suggestedViewPrompt = String.format(suggestedViewPrompt, Double.parseDouble(constants.get(0)));
+	    		textDis.setText(suggestedViewPrompt);
+				
+			}
+
+			little.setOnClickListener(	new OnClickListener (){
+				 public void onClick(View v) {
+					 	//settingSuggestedCalorie(1.2);
+				    	TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+				    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+				    		suggestedViewPrompt = String.format(suggestedViewPrompt, workOutValue(1.2));
+				    		textDis.setText(suggestedViewPrompt);
+					 }
+					});
+			light.setOnClickListener(	new OnClickListener (){
+				 public void onClick(View v) {
+					 	//settingSuggestedCalorie(1.2);
+				    	TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+				    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+				    		suggestedViewPrompt = String.format(suggestedViewPrompt, workOutValue(1.375));
+				    		textDis.setText(suggestedViewPrompt);
+					 }
+					});
+			moderate.setOnClickListener(	new OnClickListener (){
+				 public void onClick(View v) {
+					 	//settingSuggestedCalorie(1.2);
+				    	TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+				    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+				    		suggestedViewPrompt = String.format(suggestedViewPrompt, workOutValue(1.55));
+				    		textDis.setText(suggestedViewPrompt);
+					 }
+					});
+			heavy.setOnClickListener(	new OnClickListener (){
+				 public void onClick(View v) {
+					 	//settingSuggestedCalorie(1.2);
+				    	TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+				    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+				    		suggestedViewPrompt = String.format(suggestedViewPrompt, workOutValue(1.725));
+				    		textDis.setText(suggestedViewPrompt);
+					 }
+					});
+			veryHeavy.setOnClickListener(	new OnClickListener (){
+				 public void onClick(View v) {
+					 	//settingSuggestedCalorie(1.2);
+				    	TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+				    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+				    		suggestedViewPrompt = String.format(suggestedViewPrompt, workOutValue(1.9));
+				    		textDis.setText(suggestedViewPrompt);
+					 }
+					});
+			
+
+			
+			
+			
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 					context);
 
@@ -81,21 +173,29 @@ public class DietActivity extends Activity {
 				.setPositiveButton("OK",
 				  new DialogInterface.OnClickListener() {
 					
+
 				    public void onClick(DialogInterface dialog,int id) {
-						little = (RadioButton) promptsView.findViewById(R.id.radioButton_little_to_no);
-						light = (RadioButton) promptsView.findViewById(R.id.radioButton_light);
-						moderate = (RadioButton) promptsView.findViewById(R.id.radioButton_moderate);
-						heavy = (RadioButton) promptsView.findViewById(R.id.radioButton_heavy);
-						veryHeavy = (RadioButton) promptsView.findViewById(R.id.radioButton_very_heavy);
-				    	
-				    	
+
+						
+					
+				   
+						
+						
+						
 				    	selectionList = (RadioGroup)promptsView.findViewById(R.id.radioGroup1);
-						int selectedId = selectionList.getCheckedRadioButtonId();
+				    	int selectedId = selectionList.getCheckedRadioButtonId();
 				    	RadioButton radioSelectionButton = (RadioButton)promptsView.findViewById(selectedId);
 				    	//code where the if statements and formulas go
 				    	text = radioSelectionButton.getText().toString();
 				    	onResume();
 				    	check(text);
+				    	TextView textDis = (TextView) promptsView.findViewById(R.id.textDisplay);
+				    	String suggestedViewPrompt = getString(R.string.suggestedCalorie_test);
+				    	if (!constants.get(0).equals("s")){
+				    		suggestedViewPrompt = String.format(suggestedViewPrompt, Double.parseDouble(constants.get(0)));
+				    		textDis.setText(suggestedViewPrompt);
+							
+						}
 				    	//onResume();
 				    	dialog.cancel();
 				    	
@@ -245,23 +345,23 @@ public class DietActivity extends Activity {
 		//String newCalorieIntake =getString(R.string.suggestedCalorie_test);
 		if (checkedId.equals(little.getText().toString())){
 			settingSuggestedCalorie(1.2);
-			Toast.makeText(DietActivity.this, little.getText().toString(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(DietActivity.this, little.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(light.getText().toString())){
 			settingSuggestedCalorie(1.375);
-			Toast.makeText(DietActivity.this, light.getText().toString(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(DietActivity.this, light.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(moderate.getText().toString())){
 			settingSuggestedCalorie(1.55);
-			Toast.makeText(DietActivity.this, moderate.getText().toString(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(DietActivity.this, moderate.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(heavy.getText().toString())){
 			settingSuggestedCalorie(1.725);
-			Toast.makeText(DietActivity.this, heavy.getText().toString(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(DietActivity.this, heavy.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		else if (checkedId.equals(veryHeavy.getText().toString())){
 			settingSuggestedCalorie(1.9);
-			Toast.makeText(DietActivity.this, veryHeavy.getText().toString(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(DietActivity.this, veryHeavy.getText().toString(), Toast.LENGTH_SHORT).show();
 		}
 		//displayingCalories.setText(newCalorieIntake);
 	}
@@ -269,7 +369,35 @@ public class DietActivity extends Activity {
 	private void settingSuggestedCalorie(double constant){
 		double BMR=0;
 		double tIntake =0;
-		Users user = db.getUserFoodDetails();
+		Users user = db.getUserFoodDetails("jesus");
+		if ("M".equals(user.getGender()))
+		{
+			BMR = 88.362
+				   + (13.397 * (user.getWeight()*0.453592))
+				   + (4.799 * (user.getHeightFeet()*12+user.getHeightInches())*2.54)
+				   + (5.677 * user.getAge());
+		tIntake = BMR * constant;
+		db.updateFConstatnts("jesus", tIntake+"", "t", "i", "b");
+		} 
+		if ("F".equals(user.getGender()))
+		{
+			BMR = 447.593
+				   + (9.247 * (user.getWeight()*0.453592))
+				   + (3.098 * (user.getHeightFeet()*12+user.getHeightInches())*2.54)
+				   + (4.330 * user.getAge());
+		tIntake = BMR * constant;
+		db.updateFConstatnts("jesus", tIntake+"", "t", "i", "b");
+		} 
+		
+		onResume();
+		
+	}
+	
+	
+	private double workOutValue(double constant){
+		double BMR=0;
+		double tIntake =0;
+		Users user = db.getUserFoodDetails("jesus");
 		if ("M".equals(user.getGender()))
 		{
 			BMR = 88.362
@@ -278,14 +406,17 @@ public class DietActivity extends Activity {
 				   + (5.677 * user.getAge());
 		tIntake = BMR * constant;
 		} 
-		//Toast.makeText(DietActivity.this, tIntake+"", Toast.LENGTH_SHORT).show();
-		//displayingCalories
-		String display = getString(R.string.suggestedCalorie_test);
-		display = String.format(display, tIntake);
-		displayingCalories.setText(display);
+		if ("F".equals(user.getGender()))
+		{
+			BMR = 447.593
+				   + (9.247 * (user.getWeight()*0.453592))
+				   + (3.098 * (user.getHeightFeet()*12+user.getHeightInches())*2.54)
+				   + (4.330 * user.getAge());
+		tIntake = BMR * constant;
+		} 
+		return tIntake;
 		
 	}
-	
 	private void populateFood() {
 		
 		String[] columnTags = new String[] {"food", "cal"};

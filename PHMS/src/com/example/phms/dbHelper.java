@@ -55,12 +55,13 @@ Class variables
 	static final String KEY_UNIT = "unit";
 	static final String KEY_CONFLICTIONS = "conflictions";
 	static final String KEY_ID = "id";
-	static final String KEY_CON = "con_count";
 	
 	
-	private static final String TABLE_FOOD_CONSTANTS = "FOOD_CONSTANTS";
+	private static final String TABLE_FCONSTANTS = "FCONSTANTS";
 	static final String KEY_SUGGESTED = "suggested";
 	static final String KEY_TODAY = "today";
+	static final String KEY_INTAKE = "intake";
+	static final String KEY_BURNED = "burned";
 
 	
 	
@@ -84,11 +85,11 @@ Class variables
 	private static final String SQL_CREATE_MEDICINE_TABLE = 
 			"CREATE TABLE " + TABLE_MEDICINE + " ("
 					+ KEY_MUSER + " TEXT," + KEY_MNAME + " TEXT," + KEY_TIMES_PER + " INT," + KEY_DOSAGE + " INT," 
-					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT," + KEY_CON + " INT" + " )";
+					+ KEY_UNIT + " TEXT," + KEY_CONFLICTIONS + " TEXT," + KEY_ID + " TEXT" + " )";
 	
-	private static final String SQL_CREATE_FOOD_CONSTANTS_TABLE = 
-			"CREATE TABLE " + TABLE_FOOD_CONSTANTS + " ("
-					+ KEY_USER + " TEXT," + KEY_SUGGESTED + " TEXT," + KEY_TODAY + " TEXT," + " )";
+	private static final String SQL_CREATE_FCONSTANTS_TABLE = 
+			"CREATE TABLE " + TABLE_FCONSTANTS + " ("
+					+ KEY_USER + " TEXT," + KEY_SUGGESTED + " TEXT," +  KEY_TODAY + " TEXT," + KEY_INTAKE + " TEXT," + KEY_BURNED + " TEXT" + ")";
 	
 
 //constructor
@@ -103,7 +104,7 @@ Class variables
     		db.execSQL(SQL_CREATE_FOOD_TABLE);
     		db.execSQL(SQL_CREATE_EX_TABLE);
     		db.execSQL(SQL_CREATE_MEDICINE_TABLE);
-    		db.execSQL(SQL_CREATE_FOOD_CONSTANTS_TABLE);
+    		db.execSQL(SQL_CREATE_FCONSTANTS_TABLE);
     	}
     	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     	{
@@ -111,7 +112,7 @@ Class variables
     		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD);
     		db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCISE);
     		db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEDICINE);
-    		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD_CONSTANTS);
+    		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FCONSTANTS);
     		onCreate(db);
     	}
     	
@@ -181,12 +182,30 @@ Class variables
             // return contact list
             return mylistData;
         }
+        public  ArrayList<String> getFConstants(String user) {
+        	
+    		ArrayList<String> mylistData = new ArrayList<String>();
+            String selectQuery = "SELECT  * FROM " + TABLE_FCONSTANTS;
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            if (cursor.moveToFirst()) {
+                do {
+                	if (cursor.getString(0).equals(user)){
+                		mylistData.add(cursor.getString(1));
+                		mylistData.add(cursor.getString(2));
+                		mylistData.add(cursor.getString(3));
+                		mylistData.add(cursor.getString(4));
+                	}
+                } while (cursor.moveToNext());
+            }
+            return mylistData;
+        }
         
         //getting elements from the user for the diet activity
-        public  Users getUserFoodDetails() {
+        public  Users getUserFoodDetails(String u) {
         	
 
-    		Users user = new Users("Jesus");
+    		Users user = new Users(u);
             String selectQuery = "SELECT  * FROM " + TABLE_USER;
          
             SQLiteDatabase db = this.getWritableDatabase();
@@ -195,7 +214,7 @@ Class variables
             // looping through all rows and adding to list
             if (cursor.moveToFirst()) {
                 do {
-                	if (cursor.getString(0).equals("Jesus"))
+                	if (cursor.getString(0).equals(u))
                 	{
                 		user.setAge(Integer.parseInt(cursor.getString(6)));
                 		user.setGender(cursor.getString(7));
@@ -271,6 +290,22 @@ Class variables
         db.close(); // Closing database connection
     }
     
+    public void setFoodConstants(String user, String suggested, String today, String intake, String burned)
+    {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	ContentValues cv = new ContentValues();
+    	
+    	cv.put(KEY_USER, user);
+		cv.put(KEY_SUGGESTED, suggested);
+		cv.put(KEY_TODAY, today);
+		cv.put(KEY_INTAKE, intake);
+		cv.put(KEY_BURNED, burned);
+		
+		// Inserting Row
+        db.insert(TABLE_FCONSTANTS, null, cv);
+        db.close(); // Closing database connection
+    }
+    
     public void addMedicine (Medicine medicine) {
     	
     	SQLiteDatabase db = this.getWritableDatabase();
@@ -283,16 +318,11 @@ Class variables
     	cv.put(KEY_UNIT, medicine.getUnit());
     	cv.put(KEY_CONFLICTIONS, medicine.getConflictions());
     	cv.put(KEY_ID, medicine.getID());
-    	cv.put(KEY_CON, medicine.getCount());
     	
     	db.insert(TABLE_MEDICINE, null, cv);
     	
     }
     
-<<<<<<< HEAD
-=======
-
->>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
     public void deleteMedicine(int timeStamp) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEDICINE, KEY_ID + " = ?",
@@ -325,7 +355,6 @@ Class variables
                 m.setUnit(cursor.getString(4));
                 m.setConflictions(cursor.getString(5));
                 m.setID(cursor.getString(6));
-                m.setCount(Integer.parseInt(cursor.getString(7)));
                 // Adding contact to list
                 map.put("user", m.getUserName());
 				map.put("name", m.getName());
@@ -334,7 +363,6 @@ Class variables
 				map.put("unit", m.getUnit());
 				map.put("con", m.getConflictions());
 				map.put("id", m.getID());
-				map.put("count", m.getCount());
 				
 				mylistData.add(map);
             } while (cursor.moveToNext());
@@ -344,15 +372,8 @@ Class variables
         return mylistData;
     }
     
-<<<<<<< HEAD
 public void addExercise(Exercise ex)
 
-=======
-
-
-    public void addExercise(Exercise ex)
-
->>>>>>> d7d06bea68e7094181d62aefb6712365cfebb8f8
     {
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
@@ -386,6 +407,20 @@ public void addExercise(Exercise ex)
         // updating row
         return db.update(TABLE_FOOD, values, KEY_TIME + " = ?",
                 new String[] { String.valueOf(food.getTimeStamp()) });
+    }
+    
+    public int updateFConstatnts(String user, String s, String t, String i, String b) {
+        SQLiteDatabase db = this.getWritableDatabase();
+     
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER, user);
+        values.put(KEY_SUGGESTED, s);
+        values.put(KEY_TODAY, t);
+        values.put(KEY_INTAKE, i);
+        values.put(KEY_BURNED, b);
+        // updating row
+        return db.update(TABLE_FCONSTANTS, values, KEY_USER + " = ?",
+                new String[] { String.valueOf(user) });
     }
     
     public int getCount(String value) {
