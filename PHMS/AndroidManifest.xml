@@ -9,11 +9,10 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SEND_SMS">
+    <uses-permission android:name="android.permission.SEND_SMS" >
     </uses-permission>
-        <uses-permission android:name="android.permission.RECEIVE_SMS">
+    <uses-permission android:name="android.permission.RECEIVE_SMS" >
     </uses-permission>
-    
 
     <application
         android:allowBackup="true"
@@ -104,6 +103,10 @@
         <activity
             android:name="com.example.phms.EditAccountActivity"
             android:label="@string/title_activity_edit_account" >
+        </activity>
+        <activity
+            android:name="com.example.phms.EditMedicationActivity"
+            android:label="@string/title_activity_edit_medication" >
         </activity>
     </application>
 

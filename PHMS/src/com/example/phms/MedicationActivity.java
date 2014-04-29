@@ -10,12 +10,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 public class MedicationActivity extends Activity {
 
@@ -24,6 +26,7 @@ public class MedicationActivity extends Activity {
 	protected dbHelper db;
 	private static int count=0;
 	private int numberToBeDeleted;
+	public Medicine m;
 	
 	
 	@Override
@@ -36,6 +39,46 @@ public class MedicationActivity extends Activity {
     	db = new dbHelper(this);
     	hlist = db.getAllMedicine();
     	populateListViewFromDB(hlist);
+    	
+    	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
+				
+				final int index = position;
+
+				 HashMap <String,Object> h = (HashMap<String, Object>) parent.getItemAtPosition(position);
+				 m = new Medicine();
+				 m.setName((String)h.get("name"));
+				 m.setUserName((String)h.get("user"));
+				 m.setConflictions((String)h.get("con"));
+				 m.setDays((String)h.get("days"));
+				 m.setTimes((String)h.get("times"));
+				 m.setUnit((String)h.get("unit"));
+				 m.setID((String)h.get("id"));
+				 m.setDosage((Integer)h.get("quant"));
+				 m.setTimeCount((Integer)h.get("time_count"));
+				 m.setCount((Integer)h.get("con_count"));
+				 
+				 
+
+				 
+				
+				 /*
+
+                 Toast toast=Toast.makeText(getApplicationContext(), 
+                		 m.getName(),Toast.LENGTH_LONG );
+                 toast.setGravity(Gravity.CENTER, 0, 0);
+                 toast.show();
+                 
+                 */
+				 
+                 editMedication(findViewById(R.id.med_list));
+
+                 
+                 
+			}
+
+		});
     	
     	
 		list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -118,8 +161,19 @@ public class MedicationActivity extends Activity {
 		Intent intent = new Intent(this, AddMedicationActivity.class);
 	    startActivity(intent);
 	    this.finish();
+	    
 
 	}
+	
+	public void editMedication(View view) {
+		Intent intent = new Intent(this, EditMedicationActivity.class);
+		intent.putExtra("myobj",m);
+	    startActivity(intent);
+	    this.finish();
+	    
+
+	}
+	
 	
     private void removeItemFromList(int position) {
         //final int deletePosition = position;

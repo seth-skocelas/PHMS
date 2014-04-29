@@ -132,25 +132,14 @@
         android:inputType="number" />
 
     <Button
-        android:id="@+id/view_con_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="16dp"
-        android:text="View" />
-
-    <Button
         android:id="@+id/view_times_button"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignLeft="@+id/textView5"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="16dp"
-        android:text="View/Delete Times" />
+        android:text="@string/view_alarm_times" />
 
     <Button
         android:id="@+id/add_time_button"
@@ -160,6 +149,16 @@
         android:layout_alignBaseline="@+id/view_times_button"
         android:layout_alignBottom="@+id/view_times_button"
         android:layout_alignRight="@+id/edit_unit"
-        android:text="Add Days/Time" />
+        android:text="@string/add_days_time" />
+
+    <Button
+        android:id="@+id/view_con_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/view_conflictions" />
 
 </RelativeLayout>

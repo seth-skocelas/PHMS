@@ -391,6 +391,26 @@ public void addMedicine (Medicine medicine) {
         return mylistData;
     }
     
+    public int updateMedicine(Medicine m) {
+        SQLiteDatabase db = this.getWritableDatabase();
+     
+        ContentValues values = new ContentValues();
+        values.put(KEY_MUSER,  m.getUserName());
+        values.put(KEY_MNAME,  m.getName());
+        values.put(KEY_TIMES_PER,  m.getTimesPer());
+        values.put(KEY_DOSAGE,  m.getDosage());
+        values.put(KEY_UNIT,  m.getUnit());
+        values.put(KEY_CONFLICTIONS,  m.getConflictions());
+        values.put(KEY_ID,  m.getID());
+        values.put(KEY_CON,  m.getCount());
+        values.put(KEY_TIMES,  m.getTimes());
+        values.put(KEY_TIME_COUNT,  m.getTimeCount());
+        values.put(KEY_DAYS,  m.getDays());
+     
+        // updating row
+        return db.update(TABLE_MEDICINE, values, KEY_ID + " = ?",
+                new String[] { String.valueOf(m.getID()) });
+    }
 
 public void addExercise(Exercise ex)
 

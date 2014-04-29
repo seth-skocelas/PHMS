@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,10 +46,10 @@ public class AddMedicationActivity extends Activity {
 	String [] currentTimes = {" "," "," "," "," "};
 	public static String strSeparator = "__,__";
 	int numC = 0, i;
-	String conflictionList, daysList, timesList, cTime;
+	String conflictionList, daysList, timesList, cTime, username = "Test";
 	private Button viewConButton, viewTimeButton, addTimeButton;
 	private ListView cList, tList;
-
+	private ArrayList<HashMap<String, Object>> allMed;
 	
 
 	
@@ -302,6 +303,8 @@ public class AddMedicationActivity extends Activity {
 								currentTimes[timeCount] = cTime;
 								timeCount++;
 							}
+							else
+					    		  Toast.makeText(AddMedicationActivity.this, "Only 5 alarms can be stored.", Toast.LENGTH_LONG).show();
                
 							alert.dismiss();
 						}
@@ -372,10 +375,10 @@ public class AddMedicationActivity extends Activity {
 	  	}
 	
 	public void cancelMedication(View view) {
-		this.finish();
+		endActivity(view);
 	}
 	
-	public void confirmMedication(View view) {
+	public void confirmMedication(final View view) {
 		
 
 		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -384,23 +387,36 @@ public class AddMedicationActivity extends Activity {
 		alertDialog.setButton(BUTTON_POSITIVE,"Yes", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		    	  
+		    	  if (name.getText().toString().equals("") || dosage.getText().toString().equals("") || unit.getText().toString().equals("")){
+						Toast.makeText(AddMedicationActivity.this, "You must fill in Name, Dosage and Unit.", Toast.LENGTH_LONG).show();
+					}
+		    	  else {
 		    	  
-		    	  String a = name.getText().toString();
-		    	  int c = Integer.parseInt(dosage.getText().toString());
-		    	  String d = unit.getText().toString();
-		    	  conflictionList = convertArrayToString(currentConflictions);
-		    	  timesList = convertArrayToString(currentTimes);
-		    	  daysList = convertArrayToString(alarmDays);
+		    		  String a = name.getText().toString();
+		    		  int c = Integer.parseInt(dosage.getText().toString());
+		    		  String d = unit.getText().toString();
+		    		  conflictionList = convertArrayToString(currentConflictions);
+		    		  timesList = convertArrayToString(currentTimes);
+		    		  daysList = convertArrayToString(alarmDays);
+
 		    	  
-		    	  Medicine currentMedicine = new Medicine(a,a,1,c,d,conflictionList,(count++ + ""),conCount,
+		    	  
+		    		  Medicine currentMedicine = new Medicine(username,a,1,c,d,conflictionList,(new Time()).toString(),conCount,
 		    			  									timesList, timeCount, daysList);
-		  		  mDbHelper.addMedicine(currentMedicine);
-		  		  mDbHelper.close();
-		  		  conCount = 0;
-		  		  timeCount = 0;
-		    	  endActivity();
+		  		  
+		    		  boolean foundConfliction = checkConflictions(a);
+		    	  
+		    		  if (!foundConfliction) {
+		    			  mDbHelper.addMedicine(currentMedicine);
+		    			  mDbHelper.close();
+		    			  conCount = 0;
+		    			  timeCount = 0;
+		    			  endActivity(view);
+		    		  	}
+		    		  
+		    	  		}
 		 
-		    } });
+		    	  	} });
 		alertDialog.setButton(BUTTON_NEGATIVE,"No", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		 
@@ -432,10 +448,16 @@ public class AddMedicationActivity extends Activity {
 		alertDialog.setButton(BUTTON_POSITIVE,"Yes", new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		    	  
+		    	  if (conCount > 9)
+		    		  Toast.makeText(AddMedicationActivity.this, "Only 10 Conflictions can be stored.", Toast.LENGTH_LONG).show();
+		    	  else {
 		    	  String e = conflictions.getText().toString();
-		    	  currentConflictions[conCount] = e;
-		    	  conCount++;
-		 
+		    	  boolean foundNameConfliction = checkNames(e);
+		    	  if (!foundNameConfliction) {
+		    		  currentConflictions[conCount] = e;
+		    		  conCount++;
+		    	  }
+		    	  }
 
 		 
 		    } });
@@ -469,8 +491,15 @@ public class AddMedicationActivity extends Activity {
 	
 	
 	
-	public void endActivity() {
+	public void endActivity(View view) {
 	
+		Intent intent = new Intent(this, MedicationActivity.class);
+	    startActivity(intent);
+		AddMedicationActivity.this.finish();
+	}
+	
+	public void endActivity() {
+		
 		Intent intent = new Intent(this, MedicationActivity.class);
 	    startActivity(intent);
 		AddMedicationActivity.this.finish();
@@ -588,5 +617,57 @@ public class AddMedicationActivity extends Activity {
         alert.show();
       
     }
+    
+    boolean checkConflictions(String a) {
+    	
+        allMed = mDbHelper.getAllMedicine();
+    	  
+    	  
+    	  for (HashMap<String, Object> h : allMed) {
+    		  String name = (String) h.get("name");
+    		  String thisUser = (String) h.get("user");
+    		  String con = (String) h.get("con");
+    		  if (thisUser.equals(username)) {
+    			  String [] cons = convertStringToArray(con);
+    			  for (i = 0; i < 10; i++) {
+    				  if (a.toLowerCase().equals(cons[i].toLowerCase())) {
+    					  Toast toast=Toast.makeText(getApplicationContext(), 
+    		              "Confliction with " + name + " - Medicine not added",Toast.LENGTH_LONG );
+    		              toast.setGravity(Gravity.CENTER, 0, 0);
+    		              toast.show();
+    		              
+    		              return true;
+    				  	}
+    			  	}
+    			  
+    		  	}
+    	  	}
+      	return false;
+      }
+    
+    
+    boolean checkNames(String a) {
+    	
+        allMed = mDbHelper.getAllMedicine();
+    	  
+    	  
+    	  for (HashMap<String, Object> h : allMed) {
+    		  String name = (String) h.get("name");
+    		  String thisUser = (String) h.get("user");
+    		  if (thisUser.toLowerCase().equals(username.toLowerCase())) {
+    			  if (a.toLowerCase().equals(name.toLowerCase())) {
+    				  Toast toast=Toast.makeText(getApplicationContext(), 
+        		      "Confliction with " + name + " - Confliction not added",Toast.LENGTH_LONG );
+        		       toast.setGravity(Gravity.CENTER, 0, 0);
+        		       toast.show();
+    				   return true;
+    			  			}
+    				  
+    		  				} 		              
+   
+    				  	}
+
+      		return false;
+      }
 
 }
